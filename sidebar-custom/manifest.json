@@ -1,0 +1,95 @@
+{
+  "name": "sidebar-custom",
+  "label": "Sidebar Custom",
+  "type": "widget",
+  "widgetType": "LAYOUT",
+  "version": "1.19.0",
+  "exbVersion": "1.19.0",
+  "author": "Esri R&D Center Beijing, customized by Brian McLeer, City of Grand Junction, CO",
+  "description": "Customized Sidebar layout widget that auto-expands a collapsed sidebar when a table is opened via Add to table or View in table, and supports auto-expansion for widget controllers.",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "flipIcon": true,
+    "supportAutoSize": false,
+    "hasBuilderSupportModule": true
+  },
+  "messageActions": [
+    {
+      "name": "toggleSidebar",
+      "label": "Toggle sidebar",
+      "uri": "message-actions/toggle-sidebar"
+    },
+    {
+      "name": "openSidebar",
+      "label": "Open sidebar",
+      "uri": "message-actions/open-sidebar",
+      "settingUri": "message-actions/open-sidebar-setting"
+    }
+  ],
+  "layouts": [
+    {
+      "name": "FIRST",
+      "label": "First",
+      "type": "FIXED"
+    },
+    {
+      "name": "SECOND",
+      "label": "Second",
+      "type": "FIXED"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "appConfigOperations",
+      "point": "APP_CONFIG_OPERATIONS",
+      "uri": "tools/app-config-operations"
+    }
+  ],
+  "defaultSize": {
+    "width": 800,
+    "height": 400
+  },
+  "translatedLocales": [
+    "en",
+    "ar",
+    "bg",
+    "bs",
+    "ca",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es",
+    "et",
+    "fi",
+    "fr",
+    "he",
+    "hr",
+    "hu",
+    "id",
+    "it",
+    "ja",
+    "ko",
+    "lt",
+    "lv",
+    "no",
+    "nl",
+    "pl",
+    "pt-br",
+    "pt-pt",
+    "ro",
+    "ru",
+    "sk",
+    "sl",
+    "sr",
+    "sv",
+    "th",
+    "tr",
+    "zh-cn",
+    "uk",
+    "vi",
+    "zh-hk",
+    "zh-tw"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "sidebar-custom",
+  "version": "1.19.0",
+  "description": "Customized Sidebar layout widget for ArcGIS Experience Builder that auto-expands a collapsed sidebar when a table is opened with Add to table or View in table, and supports auto-expansion for widget controllers.",
+  "keywords": [
+    "exb-widget",
+    "experience-builder",
+    "exb",
+    "arcgis",
+    "sidebar",
+    "layout",
+    "gis",
+    "esri"
+  ],
+  "license": "Apache-2.0",
+  "author": "Brian McLeer"
+}
