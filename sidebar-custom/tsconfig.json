@@ -1,0 +1,18 @@
+{
+  // Editor-only convenience. The Experience Builder build always uses
+  // client/tsconfig.json, not this file. This exists so opening just the widget
+  // folder inherits EB's compiler options (via extends) AND pulls in EB's global
+  // type declaration folders, which is where EB keeps `declare module '*.svg'`
+  // and the Window.jimuConfig global. Narrowing include to only the widget files
+  // is what dropped those, so we add them back here with paths relative to this
+  // file (../../../ resolves to the client folder).
+  "extends": "../../../tsconfig.json",
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "../../../types",
+    "../../../jimu-core/lib/types",
+    "../../../node_modules/@esri/**/dist/types/react.d.ts",
+    "../../../node_modules/@arcgis/**/dist/types/react.d.ts"
+  ]
+}

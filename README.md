@@ -1,8 +1,21 @@
 # Sidebar Custom widget
 
-A customized ArcGIS Experience Builder Sidebar widget for the City of Grand Junction, CO. It extends Esri's stock Sidebar widget so a collapsed sidebar expands automatically when a table is opened with "Add to table" or "View in table", and when a widget inside a Widget Controller is opened, keeping that content visible instead of hidden behind a collapsed panel.
+A customized ArcGIS Experience Builder Sidebar widget for the City of Grand Junction, CO. It extends Esri's stock Sidebar widget so a collapsed sidebar expands automatically when a table is opened with "Add to table" or "View in table", and when a widget inside a Widget Controller is opened, keeping that content visible instead of hidden behind a collapsed panel. On top of that it adds a set of opt-in behaviors, each off or set to its original default so existing apps are unchanged until configured.
 
-The downloadable widget lives in the `sidebar-custom` subfolder. Download a release, drop that folder into your Experience Builder install, and run the standard client `npm install`. See the widget's own README for the feature list and install steps.
+The downloadable widget lives in the `sidebar-custom` subfolder. Download a release, drop that folder into your Experience Builder install, and run the standard client `npm install`. See the widget's own README for the full feature list, configuration reference, and install steps.
+
+## Features at a glance
+
+- Auto-expand a collapsed sidebar when a table or a controller tool opens (each trigger independently toggleable).
+- Optional keyboard shortcut to toggle the sidebar.
+- Reduced-motion support (on by default).
+- Responsive auto-collapse below a configurable viewport width.
+- Auto-resize: widen the sidebar while a tool or table is showing, then restore.
+- Peek on hover: hovering the collapsed edge briefly reveals the sidebar.
+- Update badge on the toggle when collapsed content changes.
+- Optional pin and close header on the hosted panel.
+- Published expand/collapse message so other widgets can react via a message action.
+- URL deep-linking of the collapsed or expanded state.
 
 ## Repository layout
 
@@ -18,7 +31,7 @@ sidebar-custom-widget/           <- this repo
     ├── package.json
     ├── package-lock.json        <- generated in the EB environment
     ├── manifest.json
-    ├── README.md                <- install steps and feature list
+    ├── README.md                <- features, configuration, install steps
     ├── LICENSE
     ├── NOTICE
     └── src/ ...
@@ -32,6 +45,10 @@ See [sidebar-custom/README.md](sidebar-custom/README.md). In short: download the
 
 - ArcGIS Experience Builder Developer Edition 1.19 or 1.20 (React 19). EB 1.18 and earlier are not supported.
 
+## Configuration
+
+Every added behavior has a control in the "Behavior" section of the widget's settings panel, and every one defaults to the original behavior, so an existing app is unchanged until you opt in. The widget config fields are `autoExpand`, `keyboard`, `responsive`, `respectReducedMotion`, `autoResize`, `peek`, `badge`, `panelHeader`, `publishToggle`, and `deepLink`. See the widget README for the full reference with defaults and notes, including the two implementation choices worth knowing: the published message uses Experience Builder's standard String Selection Change message (custom message types are not supported by the framework), and URL deep-linking uses the browser History API rather than Experience Builder's URL-parameters system.
+
 ## Publishing updates (for the maintainer)
 
 The widget is developed in the Experience Builder install, then synced into this repo and pushed with `publish.ps1`. Edit the three variables at the top of the script the first time on a new machine, then:
@@ -41,10 +58,10 @@ The widget is developed in the Experience Builder install, then synced into this
 powershell -ExecutionPolicy Bypass -File .\publish.ps1
 
 # Code update plus a new downloadable release
-powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.1.0
+powershell -ExecutionPolicy Bypass -File .\publish.ps1 -Release v1.21.0
 ```
 
-The script mirrors the widget from the EB folder into the `sidebar-custom` subfolder (skipping `node_modules` and `.vs`), commits, pushes, and optionally cuts a versioned GitHub release with a downloadable zip. Tags must increase and never repeat.
+The script mirrors the widget from the EB folder into the `sidebar-custom` subfolder (skipping `node_modules` and `.vs`), commits, pushes, and optionally cuts a versioned GitHub release with a downloadable zip. Keep the `manifest.json` and `package.json` versions in sync, and make tags increase and never repeat.
 
 ## Esri Community
 

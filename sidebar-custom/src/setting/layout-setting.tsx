@@ -21,7 +21,7 @@ import {
 import { getTheme2, colorUtils } from 'jimu-theme'
 import { BorderSetting, BackgroundSetting, InputUnit } from 'jimu-ui/advanced/style-setting-components'
 import { utils } from 'jimu-layouts/layout-runtime'
-import { Switch, Select, DistanceUnits, type LinearUnit, Icon, Button, NumericInput, Collapse, utils as uiUtils, Label } from 'jimu-ui'
+import { Switch, Select, DistanceUnits, type LinearUnit, Icon, Button, NumericInput, Collapse, utils as uiUtils, Label, TextInput } from 'jimu-ui'
 import { ThemeColorPicker } from 'jimu-ui/basic/color-picker'
 import { type IMSidebarConfig, SidebarType, CollapseSides } from '../config'
 import { PREDEFINED_TOGGLE_STYLE } from './toggle-button-config'
@@ -168,6 +168,86 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
             id: this.props.widgetId,
             config: this.props.config.set('controllerWidgetId', undefined)
         })
+    }
+
+    // ---- Behavior settings (City of Grand Junction enhancements) ----
+    // All write through setIn so saved configs without these fields are upgraded
+    // in place on first change. Reads in render default to the original behavior.
+    private commitConfig = (config) => {
+        this.props.onSettingChange({ id: this.props.widgetId, config })
+    }
+
+    updateAutoExpandOnTable = (e) => {
+        this.commitConfig(this.props.config.setIn(['autoExpand', 'onTable'], e.target.checked))
+    }
+
+    updateAutoExpandOnController = (e) => {
+        this.commitConfig(this.props.config.setIn(['autoExpand', 'onController'], e.target.checked))
+    }
+
+    updateRespectReducedMotion = (e) => {
+        this.commitConfig(this.props.config.set('respectReducedMotion', e.target.checked))
+    }
+
+    updateKeyboardEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['keyboard', 'enabled'], e.target.checked))
+    }
+
+    updateKeyboardKey = (value: string) => {
+        const key = (value || '').trim().slice(0, 1).toLowerCase()
+        this.commitConfig(this.props.config.setIn(['keyboard', 'key'], key))
+    }
+
+    updateKeyboardCtrl = (e) => {
+        this.commitConfig(this.props.config.setIn(['keyboard', 'ctrl'], e.target.checked))
+    }
+
+    updateKeyboardAlt = (e) => {
+        this.commitConfig(this.props.config.setIn(['keyboard', 'alt'], e.target.checked))
+    }
+
+    updateKeyboardShift = (e) => {
+        this.commitConfig(this.props.config.setIn(['keyboard', 'shift'], e.target.checked))
+    }
+
+    updateResponsiveEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['responsive', 'enabled'], e.target.checked))
+    }
+
+    updateResponsiveBreakpoint = (value: number) => {
+        this.commitConfig(this.props.config.setIn(['responsive', 'breakpoint'], value ?? 768))
+    }
+
+    updateAutoResizeEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['autoResize', 'enabled'], e.target.checked))
+    }
+
+    updateAutoResizeSize = (value: LinearUnit) => {
+        this.commitConfig(this.props.config.setIn(['autoResize', 'expandedSize'], `${value.distance}${value.unit}`))
+    }
+
+    updatePeekEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['peek', 'enabled'], e.target.checked))
+    }
+
+    updatePeekDelay = (value: number) => {
+        this.commitConfig(this.props.config.setIn(['peek', 'delay'], value ?? 250))
+    }
+
+    updateBadgeEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['badge', 'enabled'], e.target.checked))
+    }
+
+    updatePanelHeaderEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['panelHeader', 'enabled'], e.target.checked))
+    }
+
+    updatePublishToggleEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['publishToggle', 'enabled'], e.target.checked))
+    }
+
+    updateDeepLinkEnabled = (e) => {
+        this.commitConfig(this.props.config.setIn(['deepLink', 'enabled'], e.target.checked))
     }
 
     scanForWidgets = () => {
@@ -620,10 +700,10 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                             size='sm'
                                             type='primary'
                                             onClick={this.scanForWidgets}
-                                            loading={this.state.scanning}
+                                            disabled={this.state.scanning}
                                             css={css`white-space: nowrap;`}
                                         >
-                                            Scan
+                                            {this.state.scanning ? 'Scanning...' : 'Scan'}
                                         </Button>
                                     </div>
                                     {config.controllerWidgetId && config.controllerWidgetId !== '__pending__' && (
@@ -821,6 +901,153 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                             hasForeground
                             foreground={config.secondPanelStyle?.textColor}
                             onForegroundChange={this.updateSecondPanelFg}
+                        />
+                    </SettingRow>
+                </SettingSection>
+                <SettingSection title='Behavior' role='group' aria-label='Behavior'>
+                    <SettingRow tag='label' label='Auto-expand on table open'>
+                        <Switch
+                            aria-label='Auto-expand on table open'
+                            checked={config.autoExpand?.onTable ?? true}
+                            onChange={this.updateAutoExpandOnTable}
+                        />
+                    </SettingRow>
+                    <SettingRow tag='label' label='Auto-expand on controller open'>
+                        <Switch
+                            aria-label='Auto-expand on controller open'
+                            checked={config.autoExpand?.onController ?? true}
+                            onChange={this.updateAutoExpandOnController}
+                        />
+                    </SettingRow>
+                    <SettingRow tag='label' label='Respect reduced motion'>
+                        <Switch
+                            aria-label='Respect reduced motion'
+                            checked={config.respectReducedMotion ?? true}
+                            onChange={this.updateRespectReducedMotion}
+                        />
+                    </SettingRow>
+
+                    <SettingRow tag='label' label='Keyboard shortcut'>
+                        <Switch
+                            aria-label='Keyboard shortcut'
+                            checked={config.keyboard?.enabled ?? false}
+                            onChange={this.updateKeyboardEnabled}
+                        />
+                    </SettingRow>
+                    <Collapse isOpen={config.keyboard?.enabled ?? false}>
+                        <SettingRow label='Key'>
+                            <TextInput
+                                aria-label='Shortcut key'
+                                size='sm'
+                                style={inputStyle}
+                                value={config.keyboard?.key ?? 'b'}
+                                onChange={(e) => { this.updateKeyboardKey(e.target.value) }}
+                            />
+                        </SettingRow>
+                        <SettingRow tag='label' label='Ctrl / Cmd'>
+                            <Switch aria-label='Ctrl or Cmd' checked={config.keyboard?.ctrl ?? true} onChange={this.updateKeyboardCtrl} />
+                        </SettingRow>
+                        <SettingRow tag='label' label='Alt / Option'>
+                            <Switch aria-label='Alt or Option' checked={config.keyboard?.alt ?? false} onChange={this.updateKeyboardAlt} />
+                        </SettingRow>
+                        <SettingRow tag='label' label='Shift'>
+                            <Switch aria-label='Shift' checked={config.keyboard?.shift ?? false} onChange={this.updateKeyboardShift} />
+                        </SettingRow>
+                    </Collapse>
+
+                    <SettingRow tag='label' label='Collapse on small screens'>
+                        <Switch
+                            aria-label='Collapse on small screens'
+                            checked={config.responsive?.enabled ?? false}
+                            onChange={this.updateResponsiveEnabled}
+                        />
+                    </SettingRow>
+                    <Collapse isOpen={config.responsive?.enabled ?? false}>
+                        <SettingRow label='Breakpoint (px)'>
+                            <NumericInput
+                                aria-label='Breakpoint in pixels'
+                                precision={0}
+                                min={0}
+                                size='sm'
+                                style={inputStyle}
+                                value={config.responsive?.breakpoint ?? 768}
+                                onChange={this.updateResponsiveBreakpoint}
+                            />
+                        </SettingRow>
+                    </Collapse>
+
+                    <SettingRow tag='label' label='Widen for tools and tables'>
+                        <Switch
+                            aria-label='Widen for tools and tables'
+                            checked={config.autoResize?.enabled ?? false}
+                            onChange={this.updateAutoResizeEnabled}
+                        />
+                    </SettingRow>
+                    <Collapse isOpen={config.autoResize?.enabled ?? false}>
+                        <SettingRow label='Expanded size'>
+                            <InputUnit
+                                aria-label='Expanded size'
+                                precision={0}
+                                min={0}
+                                units={availableUnits}
+                                value={uiUtils.stringOfLinearUnit(config.autoResize?.expandedSize ?? '600px')}
+                                style={inputStyle}
+                                onChange={this.updateAutoResizeSize}
+                            />
+                        </SettingRow>
+                    </Collapse>
+
+                    <SettingRow tag='label' label='Peek on hover'>
+                        <Switch
+                            aria-label='Peek on hover'
+                            checked={config.peek?.enabled ?? false}
+                            onChange={this.updatePeekEnabled}
+                        />
+                    </SettingRow>
+                    <Collapse isOpen={config.peek?.enabled ?? false}>
+                        <SettingRow label='Hover delay (ms)'>
+                            <NumericInput
+                                aria-label='Hover delay in milliseconds'
+                                precision={0}
+                                min={0}
+                                step={50}
+                                size='sm'
+                                style={inputStyle}
+                                value={config.peek?.delay ?? 250}
+                                onChange={this.updatePeekDelay}
+                            />
+                        </SettingRow>
+                    </Collapse>
+
+                    <SettingRow tag='label' label='Update badge on toggle'>
+                        <Switch
+                            aria-label='Update badge on toggle'
+                            checked={config.badge?.enabled ?? false}
+                            onChange={this.updateBadgeEnabled}
+                        />
+                    </SettingRow>
+
+                    <SettingRow tag='label' label='Panel header (pin and close)'>
+                        <Switch
+                            aria-label='Panel header with pin and close'
+                            checked={config.panelHeader?.enabled ?? false}
+                            onChange={this.updatePanelHeaderEnabled}
+                        />
+                    </SettingRow>
+
+                    <SettingRow tag='label' label='Publish expand/collapse message'>
+                        <Switch
+                            aria-label='Publish expand and collapse message'
+                            checked={config.publishToggle?.enabled ?? false}
+                            onChange={this.updatePublishToggleEnabled}
+                        />
+                    </SettingRow>
+
+                    <SettingRow tag='label' label='Remember state in URL'>
+                        <Switch
+                            aria-label='Remember state in URL'
+                            checked={config.deepLink?.enabled ?? false}
+                            onChange={this.updateDeepLinkEnabled}
                         />
                     </SettingRow>
                 </SettingSection>

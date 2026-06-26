@@ -5,7 +5,9 @@ import {
     jsx,
     type IMState,
     getAppStore,
-    appActions
+    appActions,
+    MessageManager,
+    StringSelectionChangeMessage
 } from 'jimu-core'
 import { SidebarLayout } from '../layout/runtime/layout'
 import type { IMSidebarConfig } from '../config'
@@ -19,6 +21,29 @@ interface ExtraProps {
 }
 
 type Rect = { top: number; left: number; width: number; height: number }
+
+// ---- Hardening: all Experience Builder DOM coupling lives here ----
+// Every selector and class name this widget depends on from EB's internal markup
+// is centralized below. If an EB release renames any of these and the auto-expand
+// stops working, updating these strings is the one-line first thing to try,
+// instead of hunting through the file.
+const SEL = {
+    controllerPanel: '.controller-panel',
+    panelContainer: '.panel-container',
+    collapsable: '.side-collapsable',
+    widgetId: '[data-widgetid]'
+}
+const CLS = {
+    hidden: 'd-none',
+    controllerPanel: 'controller-panel'
+}
+// Self-protection thresholds. If the controller DOM machinery throws this many
+// times in a row, it shuts itself down cleanly and the widget falls back to a
+// plain sidebar rather than spinning or surfacing errors.
+const MAX_CONSECUTIVE_POLL_ERRORS = 5
+const POLL_FAST_MS = 250
+const POLL_IDLE_MS = 1000
+const IDLE_POLLS_BEFORE_BACKOFF = 20
 
 export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebarConfig> & ExtraProps> {
     private lastActiveTabId: string = ''
@@ -47,6 +72,23 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
 
     // Cached layout ID prefixes for our controller (e.g. ["layout_41_", "layout_44_"])
     private _ourLayoutPrefixes: string[] | null = null
+
+    // ---- Custom (City of Grand Junction) enhancement state ----
+    private collapsedByResponsive: boolean = false
+
+    // ---- Hardening state ----
+    private pollDelay: number = POLL_FAST_MS
+    private idlePolls: number = 0
+    private pollErrorCount: number = 0
+    private machineryDisabled: boolean = false
+
+    // ---- Phase 3 feature state (all gated behind config flags, default off) ----
+    private peekActive: boolean = false
+    private peekTimer: number | null = null
+    private peekRootEl: HTMLElement | null = null
+    private pinned: boolean = false
+    private badgePending: boolean = false
+    private lastPublishedToggle: string = ''
 
     static mapExtraStateProps = (state: IMState, props: AllWidgetProps<IMSidebarConfig>): ExtraProps => {
         const defaultCollapse = props.config.defaultState !== 0
@@ -85,10 +127,114 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         return id
     }
 
+    // ---- Custom enhancement helpers ----
+    // All read defensively so saved apps without these fields keep working.
+
+    private autoExpandOnTable (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.autoExpand?.onTable ?? cfg?.get?.('autoExpand')?.onTable) ?? true
+    }
+
+    private autoExpandOnController (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.autoExpand?.onController ?? cfg?.get?.('autoExpand')?.onController) ?? true
+    }
+
+    private autoResizeEnabled (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.autoResize?.enabled ?? cfg?.get?.('autoResize')?.enabled) ?? false
+    }
+
+    private peekConfig (): { enabled: boolean, delay: number } | undefined {
+        const cfg = this.props.config as any
+        return cfg?.peek ?? cfg?.get?.('peek')
+    }
+
+    private badgeEnabled (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.badge?.enabled ?? cfg?.get?.('badge')?.enabled) ?? false
+    }
+
+    private panelHeaderEnabled (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.panelHeader?.enabled ?? cfg?.get?.('panelHeader')?.enabled) ?? false
+    }
+
+    private publishToggleEnabled (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.publishToggle?.enabled ?? cfg?.get?.('publishToggle')?.enabled) ?? false
+    }
+
+    private deepLinkEnabled (): boolean {
+        const cfg = this.props.config as any
+        return (cfg?.deepLink?.enabled ?? cfg?.get?.('deepLink')?.enabled) ?? false
+    }
+
+    private deepLinkKey (): string { return `sb_${this.props.id}` }
+
+    private prefersReducedMotion (): boolean {
+        const cfg = this.props.config as any
+        const respect = (cfg?.respectReducedMotion ?? cfg?.get?.('respectReducedMotion')) ?? true
+        if (!respect) return false
+        try {
+            return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        } catch {
+            return false
+        }
+    }
+
+    private getKeyboardConfig (): { enabled: boolean, key: string, ctrl?: boolean, alt?: boolean, shift?: boolean } | undefined {
+        const cfg = this.props.config as any
+        return cfg?.keyboard ?? cfg?.get?.('keyboard')
+    }
+
+    private getResponsiveConfig (): { enabled: boolean, breakpoint: number } | undefined {
+        const cfg = this.props.config as any
+        return cfg?.responsive ?? cfg?.get?.('responsive')
+    }
+
+    private handleKeyDown = (e: KeyboardEvent): void => {
+        const kb = this.getKeyboardConfig()
+        if (!kb?.enabled || !kb.key) return
+        if (window.jimuConfig?.isInBuilder) return
+        if (e.key.toLowerCase() !== kb.key.toLowerCase()) return
+        if (!!kb.ctrl !== (e.ctrlKey || e.metaKey)) return
+        if (!!kb.alt !== e.altKey) return
+        if (!!kb.shift !== e.shiftKey) return
+        // Don't hijack the key while the user is typing in a field.
+        const t = e.target as HTMLElement | null
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
+        e.preventDefault()
+        getAppStore().dispatch(
+            appActions.widgetStatePropChange(this.props.id, 'collapse', !this.props.sidebarVisible)
+        )
+    }
+
+    private checkResponsive (): void {
+        const r = this.getResponsiveConfig()
+        if (!r?.enabled || window.jimuConfig?.isInBuilder) return
+        const below = window.innerWidth < (r.breakpoint || 768)
+        if (below) {
+            // Entering a small screen: collapse if we are open. Remember that we
+            // were the one who collapsed it so we can restore later.
+            if (this.props.sidebarVisible && !this.collapsedByResponsive && !this.pinned) {
+                this.collapsedByResponsive = true
+                getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', false))
+            }
+        } else if (this.collapsedByResponsive) {
+            // Back to a large screen: only restore if WE collapsed it, so we
+            // never override a collapse the user chose themselves.
+            this.collapsedByResponsive = false
+            if (!this.props.sidebarVisible) {
+                getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', true))
+            }
+        }
+    }
+
     private getCollapseSide(): HTMLElement | null {
         const widgetEl = document.querySelector(`[data-widgetid="${this.props.id}"]`)
         if (!widgetEl) return null
-        const allCollapsible = widgetEl.querySelectorAll('.side-collapsable')
+        const allCollapsible = widgetEl.querySelectorAll(SEL.collapsable)
         if (allCollapsible.length === 0) return null
         if (allCollapsible.length === 1) return allCollapsible[0] as HTMLElement
         let shallowest: HTMLElement | null = null
@@ -120,25 +266,43 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
 
         setTimeout(() => {
             this.initialized = true
-            this.pollTimer = window.setInterval(() => this.pollControllerPanel(), 250)
+            // Only run the controller DOM machinery when a controller is linked.
+            // With no controller (or the link cleared in settings) no poll runs at
+            // all, and the widget behaves as a plain sidebar. Clearing the linked
+            // controller is the clean off switch for everything in this engine.
+            if (this.getControllerId()) {
+                this.scheduleNextPoll()
+            }
         }, 2000)
 
         window.addEventListener('resize', this.handleWindowResize)
+        window.addEventListener('keydown', this.handleKeyDown)
+
+        // Apply responsive collapse to the initial viewport size.
+        setTimeout(() => { this.checkResponsive() }, 2100)
+
+        // Phase 3: peek hover listeners, and restore any URL deep-link state.
+        setTimeout(() => { this.setupPeek() }, 300)
+        setTimeout(() => { this.applyDeepLinkFromUrl() }, 1500)
     }
 
     componentWillUnmount(): void {
         window.removeEventListener('resize', this.handleWindowResize)
-        if (this.pollTimer !== null) clearInterval(this.pollTimer)
+        window.removeEventListener('keydown', this.handleKeyDown)
+        if (this.pollTimer !== null) { clearTimeout(this.pollTimer); this.pollTimer = null }
         if (this.rafId !== null) cancelAnimationFrame(this.rafId)
         if (this.resizeDebounceTimer !== null) clearTimeout(this.resizeDebounceTimer)
         if (this.panelObserver) { this.panelObserver.disconnect(); this.panelObserver = null }
         this.cleanupPanelStyles()
         this.removePlaceholder()
+        this.teardownPeek()
+        this.removeBadge()
+        this.removePanelHeader()
     }
 
     componentDidUpdate(prevProps: AllWidgetProps<IMSidebarConfig> & ExtraProps): void {
         if (
-            this.initialized && !this.getControllerId() &&
+            this.initialized && !this.getControllerId() && this.autoExpandOnTable() &&
             this.props.tableActiveTabId && this.props.tableActiveTabId !== this.lastActiveTabId
         ) {
             this.lastActiveTabId = this.props.tableActiveTabId
@@ -149,6 +313,13 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         if (!prevProps.sidebarVisible && this.props.sidebarVisible) {
             this.justExpandedAt = Date.now()
             this.manuallyCollapsed = false
+
+            // Phase 3: content is now visible, so clear the update badge; announce
+            // the change to subscribers and reflect it in the URL.
+            this.badgePending = false
+            this.removeBadge()
+            this.publishToggleMessage(true)
+            this.writeDeepLinkToUrl(true)
 
             // Restore any panel containers hidden by the toggle button collapse.
             // When the sidebar was collapsed via the toggle button,
@@ -203,6 +374,9 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         // --- Sidebar just COLLAPSED ---
         if (prevProps.sidebarVisible && !this.props.sidebarVisible) {
             this.removePlaceholder()
+            this.removePanelHeader()
+            this.publishToggleMessage(false)
+            this.writeDeepLinkToUrl(false)
 
             if (this.getControllerId()) {
                 const hadActivePanel = this.lastRect !== null ||
@@ -250,18 +424,35 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
             }
         }
 
-        // --- Controller Redux state changed (backup detection) ---
+        // --- Controller Redux state changed (primary open/close signal) ---
+        // The controller's widgetState changing is the authoritative, framework
+        // level signal that a tool opened or closed. We act on it immediately and
+        // wake the poll back to fast cadence; the DOM poll is the fallback that
+        // handles positioning, not the primary detector.
         if (this.getControllerId() && prevProps.controllerOpenState !== this.props.controllerOpenState) {
             if (this.manuallyCollapsed) {
                 this.manuallyCollapsed = false
                 const ss = getSharedState(this.props.id)
                 ss.controllerPanelOpen = false
             }
-            setTimeout(() => this.pollControllerPanel(), 100)
+            this.wakePoll()
+            setTimeout(() => { try { this.pollControllerPanel() } catch { /* fail quiet */ } }, 100)
+        }
+
+        // Phase 3: raise the update badge when the collapsed content changes while
+        // the sidebar is collapsed (a tool/table opened or switched out of view).
+        if (
+            this.badgeEnabled() && !this.props.sidebarVisible &&
+            (prevProps.controllerOpenState !== this.props.controllerOpenState ||
+             prevProps.tableActiveTabId !== this.props.tableActiveTabId)
+        ) {
+            this.badgePending = true
+            this.updateBadge()
         }
     }
 
     private handleWindowResize = (): void => {
+        this.checkResponsive()
         this.noteLiveResize()
         if (this.isPanelOpen() && this.props.sidebarVisible) this.syncPanelToSidebar()
     }
@@ -287,19 +478,20 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         if (this.panelObserver) return
 
         this.panelObserver = new MutationObserver((mutations) => {
+          try {
             for (const mutation of mutations) {
                 // Check added nodes for new panel containers / controller-panels
                 for (let i = 0; i < mutation.addedNodes.length; i++) {
                     const node = mutation.addedNodes[i]
                     if (!(node instanceof HTMLElement)) continue
 
-                    const panels = node.classList?.contains('controller-panel')
+                    const panels = node.classList?.contains(CLS.controllerPanel)
                         ? [node]
-                        : Array.from(node.querySelectorAll('.controller-panel'))
+                        : Array.from(node.querySelectorAll(SEL.controllerPanel))
 
                     for (const panel of panels) {
-                        if (panel.classList.contains('d-none')) continue
-                        const pc = panel.closest('.panel-container') as HTMLElement
+                        if (panel.classList.contains(CLS.hidden)) continue
+                        const pc = panel.closest(SEL.panelContainer) as HTMLElement
                         if (!pc || pc.hasAttribute('data-sidebar-panel')) continue
                         // Only hide if it looks like it belongs to our controller
                         if (this.isPanelOurs(pc)) {
@@ -312,8 +504,8 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
                 // Also check attribute/class changes that make a panel visible
                 if (mutation.type === 'attributes' && mutation.target instanceof HTMLElement) {
                     const el = mutation.target
-                    if (el.classList?.contains('controller-panel') && !el.classList.contains('d-none')) {
-                        const pc = el.closest('.panel-container') as HTMLElement
+                    if (el.classList?.contains(CLS.controllerPanel) && !el.classList.contains(CLS.hidden)) {
+                        const pc = el.closest(SEL.panelContainer) as HTMLElement
                         if (pc && !pc.hasAttribute('data-sidebar-panel') && this.isPanelOurs(pc)) {
                             pc.style.opacity = '0'
                             pc.style.pointerEvents = 'none'
@@ -321,6 +513,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
                     }
                 }
             }
+          } catch { /* fail quiet: a DOM hiccup must never break the observer */ }
         })
 
         this.panelObserver.observe(document.body, {
@@ -342,7 +535,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
      */
     private restoreToggleHiddenPanels(): void {
         const ss = getSharedState(this.props.id)
-        const containers = document.querySelectorAll('.panel-container') as NodeListOf<HTMLElement>
+        const containers = document.querySelectorAll(SEL.panelContainer) as NodeListOf<HTMLElement>
         for (let i = 0; i < containers.length; i++) {
             const pc = containers[i]
             if (
@@ -401,7 +594,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         const owner = pc.getAttribute('data-sidebar-panel')
         if (owner === this.props.id) return true
         if (owner && owner !== this.props.id) return false
-        const nearestWidget = pc.closest('[data-widgetid]')
+        const nearestWidget = pc.closest(SEL.widgetId)
         if (nearestWidget) {
             const wid = nearestWidget.getAttribute('data-widgetid')
             if (wid === controllerId) return true
@@ -412,7 +605,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         // These IDs are set at DOM creation time — no timing issues.
         const prefixes = this.getOurLayoutPrefixes()
         if (prefixes.length > 0) {
-            const panels = pc.querySelectorAll('.controller-panel')
+            const panels = pc.querySelectorAll(SEL.controllerPanel)
             for (let i = 0; i < panels.length; i++) {
                 const id = panels[i].id
                 if (id && prefixes.some(p => id.startsWith(p))) return true
@@ -426,34 +619,34 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
     private isPanelOpen(): boolean {
         const controllerId = this.getControllerId()
         if (!controllerId) return false
-        const panels = document.querySelectorAll('.controller-panel')
+        const panels = document.querySelectorAll(SEL.controllerPanel)
         for (let i = 0; i < panels.length; i++) {
-            if (panels[i].classList.contains('d-none')) continue
-            const pc = panels[i].closest('.panel-container') as HTMLElement
+            if (panels[i].classList.contains(CLS.hidden)) continue
+            const pc = panels[i].closest(SEL.panelContainer) as HTMLElement
             if (pc && this.isPanelOurs(pc)) return true
         }
         return false
     }
 
     private findPanelContainer(): HTMLElement | null {
-        const allContainers = document.querySelectorAll('.panel-container')
+        const allContainers = document.querySelectorAll(SEL.panelContainer)
         for (let i = 0; i < allContainers.length; i++) {
             const pc = allContainers[i] as HTMLElement
             if (!this.isPanelOurs(pc)) continue
-            const visiblePanel = pc.querySelector('.controller-panel:not(.d-none)')
+            const visiblePanel = pc.querySelector(`${SEL.controllerPanel}:not(.${CLS.hidden})`)
             if (visiblePanel) return pc
         }
         return null
     }
 
     private getVisiblePanelIndex(): number {
-        const allContainers = document.querySelectorAll('.panel-container')
+        const allContainers = document.querySelectorAll(SEL.panelContainer)
         for (let i = 0; i < allContainers.length; i++) {
             const pc = allContainers[i] as HTMLElement
             if (!this.isPanelOurs(pc)) continue
-            const panels = pc.querySelectorAll('.controller-panel')
+            const panels = pc.querySelectorAll(SEL.controllerPanel)
             for (let j = 0; j < panels.length; j++) {
-                if (!panels[j].classList.contains('d-none')) return j
+                if (!panels[j].classList.contains(CLS.hidden)) return j
             }
         }
         return -1
@@ -485,7 +678,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         // hosting controller panels — skip the placeholder.
         const collapseSide = this.getCollapseSide()
         if (collapseSide) {
-            const childWidgets = collapseSide.querySelectorAll('[data-widgetid]')
+            const childWidgets = collapseSide.querySelectorAll(SEL.widgetId)
             if (childWidgets.length > 0) return false
         }
 
@@ -549,7 +742,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
 
         const sel = `.panel-container[data-sidebar-panel="${this.props.id}"]`
         const inWarmupWindow = (this.justExpandedAt > 0) && (now - this.justExpandedAt < 200)
-        const useSnap = forceSnap || isFirstWrite || inWarmupWindow || !this.transitionsEnabled
+        const useSnap = forceSnap || isFirstWrite || inWarmupWindow || !this.transitionsEnabled || this.prefersReducedMotion()
         const transition = useSnap
             ? 'none'
             : 'top 180ms ease-out, left 180ms ease-out, width 200ms ease-out, height 200ms ease-out'
@@ -582,6 +775,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
       }
     `
         this.hasEverSynced = true
+        this.updatePanelHeader(rect)
 
     }
 
@@ -622,6 +816,63 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
             el => el.removeAttribute('data-sidebar-panel')
         )
         this.lastRect = null
+        this.removePanelHeader()
+    }
+
+    private scheduleNextPoll(): void {
+        if (this.machineryDisabled) return
+        if (this.pollTimer !== null) clearTimeout(this.pollTimer)
+        this.pollTimer = window.setTimeout(() => {
+            this.runPoll()
+            this.scheduleNextPoll()
+        }, this.pollDelay)
+    }
+
+    // Wraps the poll so a single DOM hiccup can never throw out of the timer.
+    // Repeated failures self-disable the machinery (clean fallback to a plain
+    // sidebar). Also backs the poll off when there is clearly nothing to do.
+    private runPoll(): void {
+        if (this.machineryDisabled) return
+        let panelOpen = false
+        try {
+            panelOpen = this.isPanelOpen()
+            this.pollControllerPanel()
+            this.pollErrorCount = 0
+        } catch (err) {
+            this.pollErrorCount++
+            if (this.pollErrorCount >= MAX_CONSECUTIVE_POLL_ERRORS) {
+                console.warn('[sidebar-custom] controller integration disabled after repeated errors; falling back to a plain sidebar.', err)
+                this.disableMachinery()
+                return
+            }
+        }
+        // Idle backoff: stay responsive while a panel is open or the sidebar is
+        // expanded with a controller; otherwise slow down. A real open or close is
+        // still caught immediately by the Redux-driven path in componentDidUpdate,
+        // so backing off here cannot cause a missed transition.
+        const active = panelOpen || (this.props.sidebarVisible && !!this.getControllerId())
+        if (active) {
+            this.idlePolls = 0
+            this.pollDelay = POLL_FAST_MS
+        } else if (++this.idlePolls > IDLE_POLLS_BEFORE_BACKOFF) {
+            this.pollDelay = POLL_IDLE_MS
+        }
+    }
+
+    // Return to fast polling immediately (called when Redux signals a change).
+    private wakePoll(): void {
+        this.idlePolls = 0
+        this.pollDelay = POLL_FAST_MS
+    }
+
+    // Shut the DOM machinery down cleanly. After this the widget is a plain
+    // sidebar: no poll, no observer, no injected styles or placeholder.
+    private disableMachinery(): void {
+        this.machineryDisabled = true
+        if (this.pollTimer !== null) { clearTimeout(this.pollTimer); this.pollTimer = null }
+        if (this.panelObserver) { this.panelObserver.disconnect(); this.panelObserver = null }
+        try { this.cleanupPanelStyles() } catch { /* ignore */ }
+        try { this.removePlaceholder() } catch { /* ignore */ }
     }
 
     private pollControllerPanel(): void {
@@ -657,14 +908,19 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
                 pc.style.pointerEvents = 'none'
             }
 
-            if (!this.props.sidebarVisible) {
+            if (!this.props.sidebarVisible && this.autoExpandOnController()) {
                 getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', true))
                 this.justExpandedAt = Date.now()
+            } else if (this.props.sidebarVisible && this.autoResizeEnabled()) {
+                // Already expanded when the panel appeared, so no collapse dispatch
+                // fires and the layout would not re-render on its own. Nudge it so
+                // calSidebarSize can apply the auto-resize width.
+                this.forceUpdate()
             }
         } else if (!panelOpen && ss.controllerPanelOpen) {
             ss.controllerPanelOpen = false
             this.cleanupPanelStyles(true)
-            if (this.props.sidebarVisible) {
+            if (this.props.sidebarVisible && !this.pinned) {
                 getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', false))
             }
         }
@@ -682,6 +938,8 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
             this.cleanupPanelStyles()
             this.removePlaceholder()
         }
+
+        this.updateBadge()
     }
 
     private showPlaceholder(): void {
@@ -727,6 +985,188 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
     private removePlaceholder(): void {
         const el = document.getElementById(`sidebar-placeholder-${this.props.id}`)
         if (el) el.remove()
+    }
+
+    // ============================================================
+    // Phase 3 features. Each is inert unless its config flag is on.
+    // ============================================================
+
+    // ---- Peek-on-hover ----
+    private setupPeek(): void {
+        const cfg = this.peekConfig()
+        if (!cfg?.enabled || window.jimuConfig?.isInBuilder) return
+        const root = document.querySelector(`[data-widgetid="${this.props.id}"]`) as HTMLElement
+        if (!root) { setTimeout(() => { this.setupPeek() }, 500); return }
+        this.peekRootEl = root
+        root.addEventListener('mouseenter', this.handlePeekEnter)
+        root.addEventListener('mouseleave', this.handlePeekLeave)
+    }
+
+    private teardownPeek(): void {
+        if (this.peekTimer !== null) { clearTimeout(this.peekTimer); this.peekTimer = null }
+        if (this.peekRootEl) {
+            this.peekRootEl.removeEventListener('mouseenter', this.handlePeekEnter)
+            this.peekRootEl.removeEventListener('mouseleave', this.handlePeekLeave)
+            this.peekRootEl = null
+        }
+    }
+
+    private handlePeekEnter = (): void => {
+        const cfg = this.peekConfig()
+        if (!cfg?.enabled || this.pinned) return
+        if (this.props.sidebarVisible) return // already open
+        if (this.peekTimer !== null) clearTimeout(this.peekTimer)
+        this.peekTimer = window.setTimeout(() => {
+            if (!this.props.sidebarVisible) {
+                // collapse=true means EXPANDED in this widget's state convention.
+                this.peekActive = true
+                getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', true))
+            }
+        }, Math.max(0, cfg.delay ?? 250))
+    }
+
+    private handlePeekLeave = (): void => {
+        if (this.peekTimer !== null) { clearTimeout(this.peekTimer); this.peekTimer = null }
+        // Only re-collapse if WE peeked it open and the user has not pinned it.
+        if (this.peekActive && !this.pinned) {
+            this.peekActive = false
+            if (this.props.sidebarVisible) {
+                getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', false))
+            }
+        }
+    }
+
+    // ---- Update badge ----
+    private updateBadge(): void {
+        const id = `sidebar-badge-${this.props.id}`
+        const existing = document.getElementById(id)
+        const show = this.badgeEnabled() && this.badgePending && !this.props.sidebarVisible
+        if (!show) { if (existing) existing.remove(); return }
+        const root = document.querySelector(`[data-widgetid="${this.props.id}"]`)
+        const btn = root?.querySelector('.sidebar-controller') as HTMLElement
+        if (!btn) return
+        const r = btn.getBoundingClientRect()
+        if (r.width < 1) return
+        let el = existing
+        if (!el) {
+            el = document.createElement('div')
+            el.id = id
+            document.body.appendChild(el)
+        }
+        el.style.cssText = `
+          position: fixed;
+          top: ${r.top - 3}px; left: ${r.left + r.width - 7}px;
+          width: 10px; height: 10px; border-radius: 50%;
+          background: var(--sys-color-error, #d83020);
+          box-shadow: 0 0 0 2px var(--ref-palette-white, #fff);
+          pointer-events: none; z-index: 60;
+        `
+    }
+
+    private removeBadge(): void {
+        const el = document.getElementById(`sidebar-badge-${this.props.id}`)
+        if (el) el.remove()
+    }
+
+    // ---- Panel header (pin / close) ----
+    private updatePanelHeader(rect: Rect): void {
+        if (!this.panelHeaderEnabled()) { this.removePanelHeader(); return }
+        const id = `sidebar-header-${this.props.id}`
+        let el = document.getElementById(id) as HTMLElement
+        if (!el) {
+            el = document.createElement('div')
+            el.id = id
+            el.innerHTML = `
+              <button type="button" data-act="pin" title="Pin open" aria-label="Pin open" style="cursor:pointer;border:none;padding:2px 8px;border-radius:4px;font-size:12px;line-height:1.4;">Pin</button>
+              <button type="button" data-act="close" title="Close" aria-label="Close" style="cursor:pointer;border:none;background:transparent;padding:2px 8px;border-radius:4px;font-size:16px;line-height:1;">&times;</button>
+            `
+            document.body.appendChild(el)
+            el.addEventListener('click', this.handleHeaderClick)
+        }
+        el.style.cssText = `
+          position: fixed;
+          top: ${rect.top}px; left: ${rect.left}px; width: ${rect.width}px; height: 28px;
+          display: flex; align-items: center; justify-content: flex-end; gap: 4px;
+          padding: 0 6px; box-sizing: border-box;
+          background: var(--ref-palette-neutral-200, #f0f0f0);
+          border-bottom: 1px solid var(--sys-color-divider-secondary, #ccc);
+          pointer-events: auto; z-index: 51;
+        `
+        this.refreshPinButton()
+    }
+
+    private refreshPinButton(): void {
+        const el = document.getElementById(`sidebar-header-${this.props.id}`)
+        const pinBtn = el?.querySelector('[data-act="pin"]') as HTMLElement
+        if (pinBtn) {
+            pinBtn.style.background = this.pinned ? 'var(--sys-color-primary, #007ac2)' : 'transparent'
+            pinBtn.style.color = this.pinned ? '#fff' : 'inherit'
+        }
+    }
+
+    private handleHeaderClick = (e: MouseEvent): void => {
+        const t = (e.target as HTMLElement)?.closest('[data-act]') as HTMLElement
+        if (!t) return
+        const act = t.getAttribute('data-act')
+        if (act === 'pin') {
+            this.pinned = !this.pinned
+            this.refreshPinButton()
+        } else if (act === 'close') {
+            this.pinned = false
+            this.peekActive = false
+            // collapse=false means COLLAPSED in this widget's state convention.
+            getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', false))
+        }
+    }
+
+    private removePanelHeader(): void {
+        const el = document.getElementById(`sidebar-header-${this.props.id}`)
+        if (el) el.remove()
+    }
+
+    // ---- Publish expand/collapse as a message other widgets can subscribe to ----
+    private publishToggleMessage(expanded: boolean): void {
+        if (!this.publishToggleEnabled()) return
+        const stateStr = expanded ? 'expanded' : 'collapsed'
+        if (stateStr === this.lastPublishedToggle) return
+        this.lastPublishedToggle = stateStr
+        try {
+            MessageManager.getInstance().publishMessage(
+                new StringSelectionChangeMessage(this.props.id, stateStr)
+            )
+        } catch (err) {
+            console.warn('[sidebar-custom] publishToggle failed', err)
+        }
+    }
+
+    // ---- URL deep-linking (native History API, widget-scoped param) ----
+    private applyDeepLinkFromUrl(): void {
+        if (!this.deepLinkEnabled() || window.jimuConfig?.isInBuilder) return
+        try {
+            const params = new URLSearchParams(window.location.search)
+            const v = params.get(this.deepLinkKey())
+            if (v === 'open' || v === 'closed') {
+                const wantVisible = v === 'open'
+                if (wantVisible !== this.props.sidebarVisible) {
+                    getAppStore().dispatch(appActions.widgetStatePropChange(this.props.id, 'collapse', wantVisible))
+                }
+            }
+        } catch { /* ignore */ }
+    }
+
+    private writeDeepLinkToUrl(expanded: boolean): void {
+        if (!this.deepLinkEnabled() || window.jimuConfig?.isInBuilder) return
+        try {
+            const url = new URL(window.location.href)
+            url.searchParams.set(this.deepLinkKey(), expanded ? 'open' : 'closed')
+            const panelIdx = this.getVisiblePanelIndex()
+            if (expanded && panelIdx >= 0) {
+                url.searchParams.set(`${this.deepLinkKey()}_panel`, String(panelIdx))
+            } else {
+                url.searchParams.delete(`${this.deepLinkKey()}_panel`)
+            }
+            window.history.replaceState(window.history.state, '', url.toString())
+        } catch { /* ignore */ }
     }
 
     render(): React.JSX.Element {

@@ -52,6 +52,58 @@ export interface SidebarConfig {
   }
   firstPanelStyle?: any
   secondPanelStyle?: any
+  // ---- Custom (City of Grand Junction) enhancements ----
+  // Which events are allowed to auto-expand a collapsed sidebar.
+  autoExpand?: {
+    onTable: boolean // expand when a table is opened via Add to table / View in table
+    onController: boolean // expand when a widget inside the linked controller opens
+  }
+  // Optional keyboard shortcut to toggle the sidebar at runtime.
+  keyboard?: {
+    enabled: boolean
+    key: string // single key, e.g. 'b'
+    ctrl?: boolean // ctrl on Windows / cmd on macOS
+    alt?: boolean
+    shift?: boolean
+  }
+  // Auto-collapse on small screens, then restore when the screen grows back.
+  responsive?: {
+    enabled: boolean
+    breakpoint: number // viewport width in px below which the sidebar collapses
+  }
+  // Honor the OS "reduce motion" setting by skipping the slide animation.
+  respectReducedMotion?: boolean
+  // Auto-resize: widen the sidebar while a tool or table panel is showing in it,
+  // then restore the configured size when it closes. Skipped if the user has
+  // manually resized the sidebar.
+  autoResize?: {
+    enabled: boolean
+    expandedSize: string // CSS size applied while content is open, e.g. '600px'
+  }
+  // Peek-on-hover: hovering the collapsed edge briefly reveals the sidebar.
+  peek?: {
+    enabled: boolean
+    delay: number // ms of hover before it peeks open
+  }
+  // Update badge: a dot on the toggle button when collapsed content changes
+  // while the sidebar is collapsed; cleared when it is expanded.
+  badge?: {
+    enabled: boolean
+  }
+  // Optional header bar on the hosted panel with pin and close controls.
+  // Pinning suppresses the auto-collapse behaviors until unpinned.
+  panelHeader?: {
+    enabled: boolean
+  }
+  // Publish an Experience Builder StringSelectionChange message ('expanded' or
+  // 'collapsed') on toggle so other widgets can react via a message action.
+  publishToggle?: {
+    enabled: boolean
+  }
+  // Reflect the collapsed/expanded state in the app URL and restore it on load.
+  deepLink?: {
+    enabled: boolean
+  }
 }
 
 export type IMSidebarConfig = ImmutableObject<SidebarConfig>
@@ -137,5 +189,41 @@ export const defaultConfig: IMSidebarConfig = Immutable({
       }
     }
   },
-  defaultState: 1
+  defaultState: 1,
+  autoExpand: {
+    onTable: true,
+    onController: true
+  },
+  keyboard: {
+    enabled: false,
+    key: 'b',
+    ctrl: true,
+    alt: false,
+    shift: false
+  },
+  responsive: {
+    enabled: false,
+    breakpoint: 768
+  },
+  respectReducedMotion: true,
+  autoResize: {
+    enabled: false,
+    expandedSize: '600px'
+  },
+  peek: {
+    enabled: false,
+    delay: 250
+  },
+  badge: {
+    enabled: false
+  },
+  panelHeader: {
+    enabled: false
+  },
+  publishToggle: {
+    enabled: false
+  },
+  deepLink: {
+    enabled: false
+  }
 })

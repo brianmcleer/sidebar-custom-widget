@@ -144,6 +144,20 @@ export abstract class BaseSidebarLayout extends React.PureComponent<SidebarProps
 
     calSidebarSize(): number {
         const { config } = this.props
+
+        // Auto-resize: while a tool/table panel is showing in this sidebar and the
+        // user has not manually resized it, widen to the configured expanded size.
+        // Honors a manual resize (deltaSize) by skipping when the user has dragged.
+        const ar = (config as any)?.autoResize ?? (config as any)?.get?.('autoResize')
+        if (ar?.enabled && this.props.sidebarVisible && this.state.deltaSize === 0) {
+            try {
+                if (getSharedState(this.props.widgetId).controllerPanelOpen && ar.expandedSize) {
+                    const expanded: any = ar.expandedSize
+                    return expanded
+                }
+            } catch { /* fall through to the normal size */ }
+        }
+
         let size
         if (this.state.deltaSize !== 0) {
             if (utils.isPercentage(config.size)) {
