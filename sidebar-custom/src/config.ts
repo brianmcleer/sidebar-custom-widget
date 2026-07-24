@@ -2,7 +2,7 @@ import { Immutable, type ImmutableObject } from 'jimu-core'
 import { type BorderStyle, NormalLineType } from 'jimu-ui'
 
 export interface SidebarControllerStyle {
-  style: React.CSSProperties
+  style: Record<string, any>
 }
 
 export interface ColorDef {

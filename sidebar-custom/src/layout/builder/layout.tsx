@@ -8,6 +8,9 @@ import { SidebarType, CollapseSides } from '../../config'
 import { BaseSidebarLayout, type SidebarProps } from '../layout-base'
 
 class _SidebarLayoutBuilder extends BaseSidebarLayout {
+  declare readonly props: SidebarProps
+  declare state: { deltaSize: number; isResizing: boolean }
+  declare setState: (state: any, callback?: () => void) => void
   constructor (props) {
     super(props)
 

@@ -11,6 +11,7 @@ interface Props {
 }
 
 export class SidebarLayoutItem extends React.PureComponent<Props> {
+  declare readonly props: Props
   render (): React.JSX.Element {
     const { style, className, innerLayouts, itemStyle, collapsed } = this.props
     // const layoutSetting = this.props.setting || {};

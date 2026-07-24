@@ -49,6 +49,9 @@ const animation = css`
 `
 
 export abstract class BaseSidebarLayout extends React.PureComponent<SidebarProps, State> {
+    declare readonly props: SidebarProps
+    declare state: State
+    declare setState: (state: any, callback?: () => void) => void
     ref: HTMLElement
     splitRef: HTMLElement
     domSize: number

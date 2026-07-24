@@ -23,6 +23,9 @@ const dsTypes = Immutable([
 ])
 
 class _OpenSidebarSetting extends React.PureComponent<ActionSettingProps<ActionConfig>, State> {
+  declare readonly props: ActionSettingProps<ActionConfig>
+  declare state: State
+  declare setState: (state: any, callback?: () => void) => void
   constructor (props: ActionSettingProps<ActionConfig>) {
     super(props)
     this.state = {

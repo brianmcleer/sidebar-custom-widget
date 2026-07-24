@@ -65,6 +65,7 @@ export interface SidebarControllerProps {
 }
 
 export class SidebarController extends React.PureComponent<SidebarControllerProps> {
+  declare readonly props: SidebarControllerProps
   ref: HTMLDivElement
 
   getStyle (isExpressMode: boolean): SerializedStyles {

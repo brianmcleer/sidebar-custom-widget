@@ -1,18 +1,23 @@
 {
-  // Editor-only convenience. The Experience Builder build always uses
-  // client/tsconfig.json, not this file. This exists so opening just the widget
-  // folder inherits EB's compiler options (via extends) AND pulls in EB's global
-  // type declaration folders, which is where EB keeps `declare module '*.svg'`
-  // and the Window.jimuConfig global. Narrowing include to only the widget files
-  // is what dropped those, so we add them back here with paths relative to this
-  // file (../../../ resolves to the client folder).
-  "extends": "../../../tsconfig.json",
-  "include": [
-    "./**/*.ts",
-    "./**/*.tsx",
-    "../../../types",
-    "../../../jimu-core/lib/types",
-    "../../../node_modules/@esri/**/dist/types/react.d.ts",
-    "../../../node_modules/@arcgis/**/dist/types/react.d.ts"
-  ]
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": "../../..",
+    "paths": {
+      "jimu-*": ["jimu-*"],
+      "esri/*": ["node_modules/@arcgis/core/*"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true
+  },
+  "include": ["src"]
 }

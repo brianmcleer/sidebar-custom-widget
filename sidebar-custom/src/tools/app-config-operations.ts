@@ -13,7 +13,7 @@ export default class AppConfigOperation implements extensionSpec.AppConfigOperat
     contentMap?: DuplicateContext
   ): IMAppConfig {
     let newMessageConfigs = destAppConfig.messageConfigs
-    for (const [messageId, messageConfig] of Object.entries(newMessageConfigs || {})) {
+    for (const [messageId, messageConfig] of Object.entries(newMessageConfigs || {}) as Array<[string, any]>) {
       for (let i = 0; i < messageConfig.actions.length; i++) {
         const action = messageConfig.actions[i]
         if (action.actionName === 'openSidebar' && action.widgetId === destWidgetId) {

@@ -65,6 +65,9 @@ interface SettingState {
 }
 
 class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
+    declare readonly props: Props & StateToProps
+    declare state: SettingState
+    declare setState: (state: any, callback?: () => void) => void
     selectedToggleBtnStyle: string
 
     constructor(props) {

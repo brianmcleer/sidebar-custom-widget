@@ -20,6 +20,13 @@ interface ExtraProps {
     tableActiveTabId: string
 }
 
+type RuntimeProps = AllWidgetProps<IMSidebarConfig> & ExtraProps & {
+    id: string
+    layouts: any
+    theme: any
+    builderSupportModules?: any
+}
+
 type Rect = { top: number; left: number; width: number; height: number }
 
 // ---- Hardening: all Experience Builder DOM coupling lives here ----
@@ -45,7 +52,9 @@ const POLL_FAST_MS = 250
 const POLL_IDLE_MS = 1000
 const IDLE_POLLS_BEFORE_BACKOFF = 20
 
-export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebarConfig> & ExtraProps> {
+export default class Widget extends React.PureComponent<RuntimeProps> {
+    declare readonly props: RuntimeProps
+    declare forceUpdate: (callback?: () => void) => void
     private lastActiveTabId: string = ''
     private initialized: boolean = false
     private pollTimer: number | null = null
@@ -90,7 +99,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
     private badgePending: boolean = false
     private lastPublishedToggle: string = ''
 
-    static mapExtraStateProps = (state: IMState, props: AllWidgetProps<IMSidebarConfig>): ExtraProps => {
+    static mapExtraStateProps = (state: IMState, props: RuntimeProps): ExtraProps => {
         const defaultCollapse = props.config.defaultState !== 0
 
         let tableActiveTabId = ''
@@ -300,7 +309,7 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMSidebar
         this.removePanelHeader()
     }
 
-    componentDidUpdate(prevProps: AllWidgetProps<IMSidebarConfig> & ExtraProps): void {
+    componentDidUpdate(prevProps: RuntimeProps): void {
         if (
             this.initialized && !this.getControllerId() && this.autoExpandOnTable() &&
             this.props.tableActiveTabId && this.props.tableActiveTabId !== this.lastActiveTabId

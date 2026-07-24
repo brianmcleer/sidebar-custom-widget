@@ -6,7 +6,12 @@ import SidebarLayoutSetting from './layout-setting'
 import { defaultConfig } from '../config'
 import defaultMessages from './translations/default'
 
-export default class Setting extends React.PureComponent<AllWidgetSettingProps<any>> {
+type SettingProps = AllWidgetSettingProps<any> & {
+  id: string
+}
+
+export default class Setting extends React.PureComponent<SettingProps> {
+  declare readonly props: SettingProps
   formatMessage = (id: string) => {
     const messages = Object.assign({}, defaultMessages, jimuUIDefaultMessages)
     return this.props.intl.formatMessage({ id, defaultMessage: messages[id] })
