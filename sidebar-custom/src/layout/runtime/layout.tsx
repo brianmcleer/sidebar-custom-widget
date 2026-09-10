@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import { moduleLoader } from 'jimu-core'
 import type { InteractStatic } from '@interactjs/core/InteractStatic'
 import { utils } from 'jimu-layouts/layout-runtime'

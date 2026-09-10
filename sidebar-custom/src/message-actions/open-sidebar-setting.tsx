@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import {
-  React, jsx, type ActionSettingProps, Immutable, type UseDataSource, MessageType,
+  React, type ActionSettingProps, Immutable, type UseDataSource, MessageType,
   DataSourceTypes
 } from 'jimu-core'
 import { withTheme } from 'jimu-theme'

@@ -1,19 +1,14 @@
-/** @jsx jsx */
 import {
     AppMode,
     React,
     ReactRedux,
-    jsx,
     css,
     classNames,
     APP_FRAME_NAME_IN_BUILDER,
     type IMState,
     getAppStore
 } from 'jimu-core'
-import {
-    builderAppSync,
-    type SettingChangeFunction
-} from 'jimu-for-builder'
+import { builderAppSync } from 'jimu-for-builder'
 import {
     SettingSection,
     SettingRow
@@ -21,13 +16,22 @@ import {
 import { getTheme2, colorUtils } from 'jimu-theme'
 import { BorderSetting, BackgroundSetting, InputUnit } from 'jimu-ui/advanced/style-setting-components'
 import { utils } from 'jimu-layouts/layout-runtime'
-import { Switch, Select, DistanceUnits, type LinearUnit, Icon, Button, NumericInput, Collapse, utils as uiUtils, Label, TextInput } from 'jimu-ui'
+import { Switch, Select, DistanceUnits, Icon, Button, NumericInput, Collapse, utils as uiUtils, Label, TextInput } from 'jimu-ui'
 import { ThemeColorPicker } from 'jimu-ui/basic/color-picker'
 import { type IMSidebarConfig, SidebarType, CollapseSides } from '../config'
 import { PREDEFINED_TOGGLE_STYLE } from './toggle-button-config'
 import { DownOutlined } from 'jimu-icons/outlined/directional/down'
 import { DownFilled } from 'jimu-icons/filled/directional/down'
 import { DownDoubleOutlined } from 'jimu-icons/outlined/directional/down-double'
+
+// Local structural types for jimu-for-builder's SettingChangeFunction and jimu-ui's
+// LinearUnit (type-only; erased at build). Declared here rather than imported so
+// Visual Studio's mode B shim can type them.
+type SettingChangeFunction = (settings: { id: string, config?: any, [key: string]: any }, ...rest: any[]) => void
+interface LinearUnit {
+    distance: number
+    unit: string
+}
 
 const availableUnits = [DistanceUnits.PIXEL, DistanceUnits.PERCENTAGE]
 
@@ -1065,4 +1069,4 @@ function mapStateToProps(state: IMState) {
     }
 }
 
-export default ReactRedux.connect<StateToProps, unknown, Props>(mapStateToProps)(Setting)
+export default ReactRedux.connect(mapStateToProps)(Setting)

@@ -1,8 +1,6 @@
-/** @jsx jsx */
 import {
     React,
     type AllWidgetProps,
-    jsx,
     type IMState,
     getAppStore,
     appActions,

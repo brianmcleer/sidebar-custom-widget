@@ -1,13 +1,22 @@
-/** @jsx jsx */
-import { React, jsx } from 'jimu-core'
+import { React } from 'jimu-core'
 import { defaultMessages as jimuUIDefaultMessages } from 'jimu-ui'
-import type { AllWidgetSettingProps } from 'jimu-for-builder'
 import SidebarLayoutSetting from './layout-setting'
 import { defaultConfig } from '../config'
 import defaultMessages from './translations/default'
 
-type SettingProps = AllWidgetSettingProps<any> & {
+// Local structural type for jimu-for-builder's AllWidgetSettingProps (type-only;
+// erased at build). Declared here rather than imported so Visual Studio's mode B
+// shim can type it.
+type SettingProps = {
   id: string
+  config: any
+  onSettingChange: (settings: any, ...rest: any[]) => void
+  intl?: any
+  theme?: any
+  useDataSources?: any
+  useMapWidgetIds?: any
+  portalUrl?: string
+  [key: string]: any
 }
 
 export default class Setting extends React.PureComponent<SettingProps> {

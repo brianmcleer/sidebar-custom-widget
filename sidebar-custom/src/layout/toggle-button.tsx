@@ -1,9 +1,8 @@
-/** @jsx jsx */
-import { React, jsx, css, i18n, moduleLoader, type SerializedStyles, Immutable, getAppStore, type IMAppConfig, type IMState } from 'jimu-core'
-import { Icon, Button, type BorderStyle, styleUtils } from 'jimu-ui'
+import { React, css, i18n, moduleLoader, type SerializedStyles, Immutable, getAppStore, type IMAppConfig, type IMState } from 'jimu-core'
+import { Icon, Button, styleUtils } from 'jimu-ui'
 import { ThemeSwitchComponent } from 'jimu-theme'
 import type * as jimuForBuilder from 'jimu-for-builder'
-import { type ToggleBtnColor, CollapseSides, ICON_TYPE, SidebarType } from '../config'
+import { type ToggleBtnColor, type BorderStyle, CollapseSides, ICON_TYPE, SidebarType } from '../config'
 import { findSyncedSidebar } from './util'
 import leftIcon from 'jimu-icons/svg/outlined/directional/left.svg'
 import rightIcon from 'jimu-icons/svg/outlined/directional/right.svg'

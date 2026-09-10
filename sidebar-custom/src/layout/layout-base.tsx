@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import {
     React,
-    jsx,
     css,
     type IMThemeVariables,
     classNames,
@@ -12,7 +10,13 @@ import {
     type SerializedStyles,
     AppMode
 } from 'jimu-core'
-import { utils, PageContext, type PageContextProps } from 'jimu-layouts/layout-runtime'
+import { utils, PageContext } from 'jimu-layouts/layout-runtime'
+
+// Local structural type for jimu-layouts' PageContextProps (type-only; erased at build).
+interface PageContextProps {
+  builderTheme?: any
+  [key: string]: any
+}
 import { styleUtils, Loading } from 'jimu-ui'
 import { type IMSidebarConfig, SidebarType, CollapseSides, SidebarControllerPositions } from '../config'
 import { SidebarController } from './toggle-button'

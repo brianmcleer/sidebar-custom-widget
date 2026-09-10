@@ -4,18 +4,23 @@ import { type IMAppConfig, LayoutItemType } from 'jimu-core'
 export function findSyncedSidebar (appConfig: IMAppConfig, widgetId: string): string[] {
   const mainSizeMode = appConfig.mainSizeMode
   const result = []
+  // Match sidebars of this same widget type (sidebar-custom), not Esri's stock 'sidebar'.
+  const thisManifestName = appConfig.widgets?.[widgetId]?.manifest?.name
+  if (!thisManifestName) {
+    return result
+  }
 
   // 1. collect all widgets in sidebar
   const widgetsInSidebar = collectWidgetsInSidebar(appConfig, widgetId)
 
   // 2. find sidebars in other size mode
   const otherSideBar: { [key: string]: string[] } = {}
-  Object.keys(appConfig.widgets).forEach((id) => {
+  Object.keys(appConfig.widgets ?? {}).forEach((id) => {
     const widgetJson = appConfig.widgets[id]
-    if (widgetJson.manifest.name === 'sidebar' && id !== widgetId) {
-      const layoutNames = Object.keys(widgetJson.layouts)
-      const sizeMode = Object.keys(widgetJson.layouts[layoutNames[0]])[0]
-      if (sizeMode !== mainSizeMode) {
+    if (widgetJson?.manifest?.name === thisManifestName && id !== widgetId) {
+      const layoutNames = Object.keys(widgetJson.layouts ?? {})
+      const sizeMode = Object.keys(widgetJson.layouts?.[layoutNames[0]] ?? {})[0]
+      if (sizeMode && sizeMode !== mainSizeMode) {
         if (!otherSideBar[sizeMode]) {
           otherSideBar[sizeMode] = [id]
         } else {
@@ -45,11 +50,14 @@ export function findSyncedSidebar (appConfig: IMAppConfig, widgetId: string): st
 }
 
 function collectWidgetsInSidebar (appConfig: IMAppConfig, widgetId: string): string[] {
-  const widgetJson = appConfig.widgets[widgetId]
+  const widgetJson = appConfig.widgets?.[widgetId]
   const widgetsInSidebar = []
-  const layoutNames = Object.keys(widgetJson.layouts)
-  const sizeMode = Object.keys(widgetJson.layouts[layoutNames[0]])[0]
-  const layoutsInSidebar = layoutNames.map(name => widgetJson.layouts[name][sizeMode])
+  const layoutNames = Object.keys(widgetJson?.layouts ?? {})
+  const sizeMode = Object.keys(widgetJson?.layouts?.[layoutNames[0]] ?? {})[0]
+  if (!sizeMode) {
+    return widgetsInSidebar
+  }
+  const layoutsInSidebar = layoutNames.map(name => widgetJson.layouts[name]?.[sizeMode]).filter(Boolean)
 
   layoutsInSidebar.forEach((layoutId) => {
     const layout = appConfig.layouts[layoutId]

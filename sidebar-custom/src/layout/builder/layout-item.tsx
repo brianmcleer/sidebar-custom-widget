@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { React, jsx, css, classNames, type IMSizeModeLayoutJson } from 'jimu-core'
+import { React, css, classNames, type IMSizeModeLayoutJson } from 'jimu-core'
 import { LayoutEntry } from 'jimu-layouts/layout-builder'
 import { styleUtils } from 'jimu-ui'
 

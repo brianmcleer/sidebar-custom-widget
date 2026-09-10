@@ -1,16 +1,17 @@
 {
+  "//": "Self-contained Visual Studio configuration for the EB 1.21 pnpm layout. All editor declarations remain local in src/exb-editor-shims.d.ts and src/editor-shims.d.ts; the shared master shim is unchanged. Use the automatic Emotion JSX runtime, matching the EB client build. Do not restore classic JSX or the legacy JSX factory pragma: classic calls pass null props and positional children to a runtime that expects a props object with children. The existing local master shim already declares @emotion/react/jsx-runtime, so no external type paths or additional packages are required. noEmit remains enabled; run the production build from the EB client folder.",
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "Node",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "baseUrl": "../../..",
-    "paths": {
-      "jimu-*": ["jimu-*"],
-      "esri/*": ["node_modules/@arcgis/core/*"]
-    },
+    "types": [],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -19,5 +20,14 @@
     "strict": false,
     "noEmit": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".vs"
+  ]
 }

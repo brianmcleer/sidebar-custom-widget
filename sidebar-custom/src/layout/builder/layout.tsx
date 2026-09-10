@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import { Immutable, ReactRedux, type IMState, AppMode } from 'jimu-core'
 import { interact } from 'jimu-core/dnd'
 import { getAppConfigAction } from 'jimu-for-builder'
@@ -113,4 +112,4 @@ function mapStateToLayoutProps (state: IMState, ownProps: SidebarProps): { appMo
   }
 }
 
-export const SidebarLayoutBuilder = ReactRedux.connect<{ appMode: AppMode }, unknown, SidebarProps>(mapStateToLayoutProps)(_SidebarLayoutBuilder)
+export const SidebarLayoutBuilder = ReactRedux.connect(mapStateToLayoutProps)(_SidebarLayoutBuilder)

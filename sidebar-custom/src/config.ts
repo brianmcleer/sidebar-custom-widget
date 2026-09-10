@@ -1,5 +1,13 @@
 import { Immutable, type ImmutableObject } from 'jimu-core'
-import { type BorderStyle, NormalLineType } from 'jimu-ui'
+import { NormalLineType } from 'jimu-ui'
+
+// Local structural type for jimu-ui's BorderStyle (type-only; erased at build).
+// Declared here rather than imported so Visual Studio's mode B shim can type it.
+export interface BorderStyle {
+  type?: string
+  color?: string
+  width?: string
+}
 
 export interface SidebarControllerStyle {
   style: Record<string, any>
