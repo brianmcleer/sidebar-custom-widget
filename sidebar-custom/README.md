@@ -43,6 +43,12 @@ The auto-expand behavior was inspired by a solution from Jeffrey Thompson ("The 
 
 The widget then appears in the builder's widget panel as "Sidebar Custom."
 
+### The release zip and the editor shims
+
+The zip is the widget only. The Visual Studio type shims in the repo (`sidebar-custom/src/editor-shims.d.ts`, `sidebar-custom/src/exb-editor-shims.d.ts`) are left out on purpose: their ambient `declare module` blocks are not file-scoped and would rewrite the react, jimu and esri types for every other widget in your `your-extensions` folder.
+
+If you clone the repository instead of using the zip, delete `sidebar-custom/src/editor-shims.d.ts` and the other shim files listed above before building; nothing else depends on them.
+
 ## Configuration
 
 All added options live on the widget config and each has a setting in the "Behavior" section of the widget's settings panel, so you do not need to edit config by hand. Defaults preserve the original behavior, so upgrading an existing app changes nothing until you opt in. Saved apps that predate a field are upgraded in place the moment you change the matching setting.
