@@ -11,6 +11,8 @@ import { SidebarLayout } from '../layout/runtime/layout'
 import type { IMSidebarConfig } from '../config'
 import { versionManager } from '../version-manager'
 import { getSharedState } from '../shared-state'
+import { beacon } from '../shared/beacon'
+import type { BeaconHandle } from '../shared/beacon'
 
 interface ExtraProps {
     sidebarVisible: boolean
@@ -53,6 +55,7 @@ const IDLE_POLLS_BEFORE_BACKOFF = 20
 export default class Widget extends React.PureComponent<RuntimeProps> {
     declare readonly props: RuntimeProps
     declare forceUpdate: (callback?: () => void) => void
+    private beacon: BeaconHandle | null = null
     private lastActiveTabId: string = ''
     private initialized: boolean = false
     private pollTimer: number | null = null
@@ -211,6 +214,7 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
         // Don't hijack the key while the user is typing in a field.
         const t = e.target as HTMLElement | null
         if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return
+        this.beacon?.action('toggle')
         e.preventDefault()
         getAppStore().dispatch(
             appActions.widgetStatePropChange(this.props.id, 'collapse', !this.props.sidebarVisible)
@@ -256,6 +260,7 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
     }
 
     componentDidMount(): void {
+        this.beacon = beacon.init(this.props)
         this.lastActiveTabId = this.props.tableActiveTabId
         this.cleanupStaleElements()
 
@@ -846,6 +851,7 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
             this.pollControllerPanel()
             this.pollErrorCount = 0
         } catch (err) {
+            this.beacon?.error(err, 'panel-sync')
             this.pollErrorCount++
             if (this.pollErrorCount >= MAX_CONSECUTIVE_POLL_ERRORS) {
                 console.warn('[sidebar-custom] controller integration disabled after repeated errors; falling back to a plain sidebar.', err)
@@ -1116,9 +1122,11 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
         if (!t) return
         const act = t.getAttribute('data-act')
         if (act === 'pin') {
+            this.beacon?.action('pin')
             this.pinned = !this.pinned
             this.refreshPinButton()
         } else if (act === 'close') {
+            this.beacon?.action('close')
             this.pinned = false
             this.peekActive = false
             // collapse=false means COLLAPSED in this widget's state convention.
@@ -1142,6 +1150,7 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
                 new StringSelectionChangeMessage(this.props.id, stateStr)
             )
         } catch (err) {
+            this.beacon?.error(err, 'toggle')
             console.warn('[sidebar-custom] publishToggle failed', err)
         }
     }

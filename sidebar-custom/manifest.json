@@ -3,7 +3,7 @@
   "label": "Sidebar Custom",
   "type": "widget",
   "widgetType": "LAYOUT",
-  "version": "1.21.2",
+  "version": "1.21.3",
   "exbVersion": "1.21.0",
   "author": "Esri R&D Center Beijing, customized by Brian McLeer, City of Grand Junction, CO",
   "description": "Customized Sidebar layout widget that auto-expands a collapsed sidebar when a table is opened via Add to table or View in table, with configurable triggers, an optional keyboard toggle, reduced-motion support, responsive auto-collapse, auto-resize for tools and tables, peek-on-hover, an update badge, an optional pin/close panel header, a published expand/collapse message, and optional URL deep-linking.",
