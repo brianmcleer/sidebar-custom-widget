@@ -1,5 +1,7 @@
 # Sidebar Custom widget
 
+[![License](https://img.shields.io/github/license/brianmcleer/sidebar-custom-widget)](LICENSE) [![Release](https://img.shields.io/github/v/release/brianmcleer/=tag)](https://github.com/brianmcleer/sidebar-custom-widget/releases) [![Issues](https://img.shields.io/github/issues/brianmcleer/sidebar-custom-widget)](https://github.com/brianmcleer/sidebar-custom-widget/issues)
+
 A customized ArcGIS Experience Builder Sidebar widget for the City of Grand Junction, CO. It extends Esri's stock Sidebar widget so a collapsed sidebar expands automatically when a table is opened with "Add to table" or "View in table", and when a widget inside a Widget Controller is opened, keeping that content visible instead of hidden behind a collapsed panel. On top of that it adds a set of opt-in behaviors, each off or set to its original default so existing apps are unchanged until configured.
 
 The downloadable widget lives in the `sidebar-custom` subfolder. Download a release, drop that folder into your Experience Builder install, and run the standard client `npm install`. See the widget's own README for the full feature list, configuration reference, and install steps.
@@ -21,20 +23,20 @@ The downloadable widget lives in the `sidebar-custom` subfolder. Download a rele
 
 ```
 sidebar-custom-widget/           <- this repo
-├── README.md                    <- this file (GitHub landing page)
-├── LICENSE                      <- Apache-2.0
-├── NOTICE                       <- attribution for the derivative work
-├── .gitignore                   <- ignores node_modules, .vs, dist, OS cruft
-├── SECURITY.md                  <- how to report a vulnerability
-├── publish.ps1                  <- one-command publish/update automation
-└── sidebar-custom/              <- the widget (drops into your-extensions/widgets)
-    ├── package.json
-    ├── package-lock.json        <- generated in the EB environment
-    ├── manifest.json
-    ├── README.md                <- features, configuration, install steps
-    ├── LICENSE
-    ├── NOTICE
-    └── src/ ...
+â”œâ”€â”€ README.md                    <- this file (GitHub landing page)
+â”œâ”€â”€ LICENSE                      <- Apache-2.0
+â”œâ”€â”€ NOTICE                       <- attribution for the derivative work
+â”œâ”€â”€ .gitignore                   <- ignores node_modules, .vs, dist, OS cruft
+â”œâ”€â”€ SECURITY.md                  <- how to report a vulnerability
+â”œâ”€â”€ publish.ps1                  <- one-command publish/update automation
+â””â”€â”€ sidebar-custom/              <- the widget (drops into your-extensions/widgets)
+    â”œâ”€â”€ package.json
+    â”œâ”€â”€ package-lock.json        <- generated in the EB environment
+    â”œâ”€â”€ manifest.json
+    â”œâ”€â”€ README.md                <- features, configuration, install steps
+    â”œâ”€â”€ LICENSE
+    â”œâ”€â”€ NOTICE
+    â””â”€â”€ src/ ...
 ```
 
 ## Install (for users)
