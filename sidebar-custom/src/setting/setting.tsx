@@ -3,6 +3,7 @@ import { defaultMessages as jimuUIDefaultMessages } from 'jimu-ui'
 import SidebarLayoutSetting from './layout-setting'
 import { defaultConfig } from '../config'
 import defaultMessages from './translations/default'
+import { __setIntl } from './i18n-t'
 
 // Local structural type for jimu-for-builder's AllWidgetSettingProps (type-only;
 // erased at build). Declared here rather than imported so Visual Studio's mode B
@@ -27,6 +28,7 @@ export default class Setting extends React.PureComponent<SettingProps> {
   }
 
   render () {
+    __setIntl((this.props as any).intl)
     const { config, id, onSettingChange } = this.props
 
     return (

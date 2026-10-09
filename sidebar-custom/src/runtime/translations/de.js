@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Widget-Eigenschaften",
         widgetFunctions: "Widget-Funktionen",
         widgetName: "Widget-Name:",
-        widgetProps: "Widget-Eigenschaften:"
+        widgetProps: "Widget-Eigenschaften:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

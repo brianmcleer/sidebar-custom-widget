@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Pienoisohjelman ominaisuudet",
         widgetFunctions: "Pienoisohjelman toiminnot",
         widgetName: "pienoisohjelman nimi:",
-        widgetProps: "pienoisohjelman ominaisuudet:"
+        widgetProps: "pienoisohjelman ominaisuudet:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

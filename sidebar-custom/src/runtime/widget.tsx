@@ -13,6 +13,7 @@ import { versionManager } from '../version-manager'
 import { getSharedState } from '../shared-state'
 import { beacon } from '../shared/beacon'
 import type { BeaconHandle } from '../shared/beacon'
+import { __setIntl, __t } from './i18n-t'
 
 interface ExtraProps {
     sidebarVisible: boolean
@@ -1186,13 +1187,14 @@ export default class Widget extends React.PureComponent<RuntimeProps> {
     }
 
     render(): React.JSX.Element {
+    __setIntl((this.props as any).intl)
         const { layouts, theme, builderSupportModules } = this.props
         const LayoutComponent = !window.jimuConfig.isInBuilder
             ? SidebarLayout
             : builderSupportModules.widgetModules.SidebarLayoutBuilder
 
         if (LayoutComponent == null) {
-            return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>No layout component!</div>
+            return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{__t("noLayoutComponent")}</div>
         }
 
         return (

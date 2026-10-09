@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Miniprogramegenskaper",
         widgetFunctions: "Miniprogramfunksjoner",
         widgetName: "Navn på miniprogram:",
-        widgetProps: "Miniprogramegenskaper:"
+        widgetProps: "Miniprogramegenskaper:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

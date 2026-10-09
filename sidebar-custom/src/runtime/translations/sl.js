@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Lastnosti pripomočka",
         widgetFunctions: "Funkcije pripomočka",
         widgetName: "ime pripomočka:",
-        widgetProps: "lastnosti pripomočka:"
+        widgetProps: "lastnosti pripomočka:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

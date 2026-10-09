@@ -23,6 +23,7 @@ import { PREDEFINED_TOGGLE_STYLE } from './toggle-button-config'
 import { DownOutlined } from 'jimu-icons/outlined/directional/down'
 import { DownFilled } from 'jimu-icons/filled/directional/down'
 import { DownDoubleOutlined } from 'jimu-icons/outlined/directional/down-double'
+import { __setIntl, __t, __tc } from './i18n-t'
 
 // Local structural types for jimu-for-builder's SettingChangeFunction and jimu-ui's
 // LinearUnit (type-only; erased at build). Declared here rather than imported so
@@ -284,7 +285,7 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                     })
                 this.setState({ detectedWidgets: allWidgets })
             } else {
-                alert('Could not read widgets from app config.')
+                alert(__t("couldNotReadWidgetsFromApp"))
             }
         } catch (e) {
             console.warn('Sidebar scan error:', e)
@@ -548,6 +549,7 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
     }
 
     render() {
+    __setIntl((this.props as any).intl)
         const { config, appMode, formatMessage } = this.props
 
         const appTheme = getTheme2()
@@ -628,10 +630,10 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                             <option value='0'>{formatMessage('collapsed')}</option>
                         </Select>
                     </SettingRow>
-                    <SettingRow label='Sidebar Behavior' flow='wrap'>
+                    <SettingRow label={__t("sidebarBehavior")} flow='wrap'>
                         <div css={css`width: 100%;`}>
                             <Select
-                                aria-label='Sidebar Behavior'
+                                aria-label={__t("sidebarBehavior")}
                                 size='sm'
                                 value={config.controllerWidgetId ? 'controller' : 'table'}
                                 onChange={(e) => {
@@ -649,8 +651,8 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                 }}
                                 css={css`width: 100%; margin-bottom: 8px;`}
                             >
-                                <option value='table'>Attribute Table</option>
-                                <option value='controller'>Widget Controller</option>
+                                <option value='table'>{__t("attributeTable")}</option>
+                                <option value='controller'>{__t("widgetController")}</option>
                             </Select>
 
                             {!config.controllerWidgetId && (
@@ -662,11 +664,8 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                     padding: 8px;
                                     line-height: 1.5;
                                 `}>
-                                    <strong>Attribute Table Mode</strong><br />
-                                    Sidebar auto-expands when an attribute table opens
-                                    (e.g. from a feature action or "Add to Table"). No
-                                    additional setup needed — just place your Table widget
-                                    inside this sidebar's collapsible panel.
+                                    <strong>{__t("attributeTableMode")}</strong><br />
+                                    {__t("sidebarAutoExpandsWhenAnAttribute")}
                                 </div>
                             )}
 
@@ -681,24 +680,21 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                         line-height: 1.5;
                                         margin-bottom: 8px;
                                     `}>
-                                        <strong>Widget Controller Mode</strong><br />
-                                        Sidebar auto-expands when a tool is opened from
-                                        the linked Widget Controller, and collapses when
-                                        the tool is closed. The controller's tool panel
-                                        is repositioned into this sidebar area.
+                                        <strong>{__t("widgetControllerMode")}</strong><br />
+                                        {__t("sidebarAutoExpandsWhenATool")}
                                     </div>
                                     <div css={css`font-size: 12px; margin-bottom: 4px; color: var(--ref-palette-neutral-1000);`}>
-                                        Linked Controller
+                                        {__t("linkedController")}
                                     </div>
                                     <div css={css`display: flex; gap: 4px; margin-bottom: 4px;`}>
                                         <Select
-                                            aria-label='Widget Controller'
+                                            aria-label={__t("widgetController")}
                                             size='sm'
                                             value={config.controllerWidgetId === '__pending__' ? '' : (config.controllerWidgetId || '')}
                                             onChange={this.updateControllerWidgetId}
                                             css={css`flex: 1;`}
                                         >
-                                            <option value=''>— Select a widget —</option>
+                                            <option value=''>{__t("selectAWidget")}</option>
                                             {this.state.detectedWidgets.map(w => (
                                                 <option key={w.id} value={w.id}>{w.label}</option>
                                             ))}
@@ -710,7 +706,7 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                             disabled={this.state.scanning}
                                             css={css`white-space: nowrap;`}
                                         >
-                                            {this.state.scanning ? 'Scanning...' : 'Scan'}
+                                            {this.state.scanning ? 'Scanning...' : __t("scan")}
                                         </Button>
                                     </div>
                                     {config.controllerWidgetId && config.controllerWidgetId !== '__pending__' && (
@@ -722,18 +718,16 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                                                 font-family: monospace;
                                                 font-size: 11px;
                                             `}>{config.controllerWidgetId}</span>
-                                            <Button size='sm' type='tertiary' onClick={this.clearControllerWidgetId}>Clear</Button>
+                                            <Button size='sm' type='tertiary' onClick={this.clearControllerWidgetId}>{__t("clear")}</Button>
                                         </div>
                                     )}
                                     {config.controllerWidgetId === '__pending__' && (
                                         <div css={css`font-size: 11px; color: var(--sys-color-warning-dark); margin-bottom: 4px;`}>
-                                            ⚠ Click Scan then select a Widget Controller below to finish setup.
+                                            {__t("clickScanThenSelectAWidget")}
                                         </div>
                                     )}
                                     <div css={css`font-size: 11px; color: var(--ref-palette-neutral-700); margin-top: 6px; line-height: 1.4;`}>
-                                        Click <strong>Scan</strong> to populate the dropdown
-                                        with all widgets in your app, then select the Widget
-                                        Controller whose tools should appear in this sidebar.
+                                        {__t("click")} <strong>{__t("scan")}</strong> {__t("toPopulateTheDropdownWithAll")}
                                     </div>
                                 </div>
                             )}
@@ -911,68 +905,68 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                         />
                     </SettingRow>
                 </SettingSection>
-                <SettingSection title='Behavior' role='group' aria-label='Behavior'>
-                    <SettingRow tag='label' label='Auto-expand on table open'>
+                <SettingSection title={__t("behavior")} role='group' aria-label={__t("behavior")}>
+                    <SettingRow tag='label' label={__t("autoExpandOnTableOpen")}>
                         <Switch
-                            aria-label='Auto-expand on table open'
+                            aria-label={__t("autoExpandOnTableOpen")}
                             checked={config.autoExpand?.onTable ?? true}
                             onChange={this.updateAutoExpandOnTable}
                         />
                     </SettingRow>
-                    <SettingRow tag='label' label='Auto-expand on controller open'>
+                    <SettingRow tag='label' label={__t("autoExpandOnControllerOpen")}>
                         <Switch
-                            aria-label='Auto-expand on controller open'
+                            aria-label={__t("autoExpandOnControllerOpen")}
                             checked={config.autoExpand?.onController ?? true}
                             onChange={this.updateAutoExpandOnController}
                         />
                     </SettingRow>
-                    <SettingRow tag='label' label='Respect reduced motion'>
+                    <SettingRow tag='label' label={__t("respectReducedMotion")}>
                         <Switch
-                            aria-label='Respect reduced motion'
+                            aria-label={__t("respectReducedMotion")}
                             checked={config.respectReducedMotion ?? true}
                             onChange={this.updateRespectReducedMotion}
                         />
                     </SettingRow>
 
-                    <SettingRow tag='label' label='Keyboard shortcut'>
+                    <SettingRow tag='label' label={__t("keyboardShortcut")}>
                         <Switch
-                            aria-label='Keyboard shortcut'
+                            aria-label={__t("keyboardShortcut")}
                             checked={config.keyboard?.enabled ?? false}
                             onChange={this.updateKeyboardEnabled}
                         />
                     </SettingRow>
                     <Collapse isOpen={config.keyboard?.enabled ?? false}>
-                        <SettingRow label='Key'>
+                        <SettingRow label={__t("key")}>
                             <TextInput
-                                aria-label='Shortcut key'
+                                aria-label={__t("shortcutKey")}
                                 size='sm'
                                 style={inputStyle}
                                 value={config.keyboard?.key ?? 'b'}
                                 onChange={(e) => { this.updateKeyboardKey(e.target.value) }}
                             />
                         </SettingRow>
-                        <SettingRow tag='label' label='Ctrl / Cmd'>
-                            <Switch aria-label='Ctrl or Cmd' checked={config.keyboard?.ctrl ?? true} onChange={this.updateKeyboardCtrl} />
+                        <SettingRow tag='label' label={__t("ctrlCmd")}>
+                            <Switch aria-label={__t("ctrlOrCmd")} checked={config.keyboard?.ctrl ?? true} onChange={this.updateKeyboardCtrl} />
                         </SettingRow>
-                        <SettingRow tag='label' label='Alt / Option'>
-                            <Switch aria-label='Alt or Option' checked={config.keyboard?.alt ?? false} onChange={this.updateKeyboardAlt} />
+                        <SettingRow tag='label' label={__t("altOption")}>
+                            <Switch aria-label={__t("altOrOption")} checked={config.keyboard?.alt ?? false} onChange={this.updateKeyboardAlt} />
                         </SettingRow>
                         <SettingRow tag='label' label='Shift'>
                             <Switch aria-label='Shift' checked={config.keyboard?.shift ?? false} onChange={this.updateKeyboardShift} />
                         </SettingRow>
                     </Collapse>
 
-                    <SettingRow tag='label' label='Collapse on small screens'>
+                    <SettingRow tag='label' label={__t("collapseOnSmallScreens")}>
                         <Switch
-                            aria-label='Collapse on small screens'
+                            aria-label={__t("collapseOnSmallScreens")}
                             checked={config.responsive?.enabled ?? false}
                             onChange={this.updateResponsiveEnabled}
                         />
                     </SettingRow>
                     <Collapse isOpen={config.responsive?.enabled ?? false}>
-                        <SettingRow label='Breakpoint (px)'>
+                        <SettingRow label={__t("breakpointPx")}>
                             <NumericInput
-                                aria-label='Breakpoint in pixels'
+                                aria-label={__t("breakpointInPixels")}
                                 precision={0}
                                 min={0}
                                 size='sm'
@@ -983,38 +977,38 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                         </SettingRow>
                     </Collapse>
 
-                    <SettingRow tag='label' label='Widen for tools and tables'>
+                    <SettingRow tag='label' label={__t("widenForToolsAndTables")}>
                         <Switch
-                            aria-label='Widen for tools and tables'
+                            aria-label={__t("widenForToolsAndTables")}
                             checked={config.autoResize?.enabled ?? false}
                             onChange={this.updateAutoResizeEnabled}
                         />
                     </SettingRow>
                     <Collapse isOpen={config.autoResize?.enabled ?? false}>
-                        <SettingRow label='Expanded size'>
+                        <SettingRow label={__t("expandedSize")}>
                             <InputUnit
-                                aria-label='Expanded size'
+                                aria-label={__t("expandedSize")}
                                 precision={0}
                                 min={0}
                                 units={availableUnits}
-                                value={uiUtils.stringOfLinearUnit(config.autoResize?.expandedSize ?? '600px')}
+                                value={uiUtils.stringOfLinearUnit(__tc(config.autoResize?.expandedSize, "_600px"))}
                                 style={inputStyle}
                                 onChange={this.updateAutoResizeSize}
                             />
                         </SettingRow>
                     </Collapse>
 
-                    <SettingRow tag='label' label='Peek on hover'>
+                    <SettingRow tag='label' label={__t("peekOnHover")}>
                         <Switch
-                            aria-label='Peek on hover'
+                            aria-label={__t("peekOnHover")}
                             checked={config.peek?.enabled ?? false}
                             onChange={this.updatePeekEnabled}
                         />
                     </SettingRow>
                     <Collapse isOpen={config.peek?.enabled ?? false}>
-                        <SettingRow label='Hover delay (ms)'>
+                        <SettingRow label={__t("hoverDelayMs")}>
                             <NumericInput
-                                aria-label='Hover delay in milliseconds'
+                                aria-label={__t("hoverDelayInMilliseconds")}
                                 precision={0}
                                 min={0}
                                 step={50}
@@ -1026,33 +1020,33 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                         </SettingRow>
                     </Collapse>
 
-                    <SettingRow tag='label' label='Update badge on toggle'>
+                    <SettingRow tag='label' label={__t("updateBadgeOnToggle")}>
                         <Switch
-                            aria-label='Update badge on toggle'
+                            aria-label={__t("updateBadgeOnToggle")}
                             checked={config.badge?.enabled ?? false}
                             onChange={this.updateBadgeEnabled}
                         />
                     </SettingRow>
 
-                    <SettingRow tag='label' label='Panel header (pin and close)'>
+                    <SettingRow tag='label' label={__t("panelHeaderPinAndClose")}>
                         <Switch
-                            aria-label='Panel header with pin and close'
+                            aria-label={__t("panelHeaderWithPinAndClose")}
                             checked={config.panelHeader?.enabled ?? false}
                             onChange={this.updatePanelHeaderEnabled}
                         />
                     </SettingRow>
 
-                    <SettingRow tag='label' label='Publish expand/collapse message'>
+                    <SettingRow tag='label' label={__t("publishExpandCollapseMessage")}>
                         <Switch
-                            aria-label='Publish expand and collapse message'
+                            aria-label={__t("publishExpandAndCollapseMessage")}
                             checked={config.publishToggle?.enabled ?? false}
                             onChange={this.updatePublishToggleEnabled}
                         />
                     </SettingRow>
 
-                    <SettingRow tag='label' label='Remember state in URL'>
+                    <SettingRow tag='label' label={__t("rememberStateInUrl")}>
                         <Switch
-                            aria-label='Remember state in URL'
+                            aria-label={__t("rememberStateInUrl")}
                             checked={config.deepLink?.enabled ?? false}
                             onChange={this.updateDeepLinkEnabled}
                         />

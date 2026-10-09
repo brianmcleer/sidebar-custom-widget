@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "خصائص عنصر واجهة الاستخدام",
         widgetFunctions: "وظائف عنصر واجهة المستخدم",
         widgetName: "اسم عنصر واجهة المستخدم",
-        widgetProps: "خصائص عنصر واجهة المستخدم:"
+        widgetProps: "خصائص عنصر واجهة المستخدم:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

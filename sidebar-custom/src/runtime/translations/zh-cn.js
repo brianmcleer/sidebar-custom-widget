@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "微件属性",
         widgetFunctions: "微件功能",
         widgetName: "微件名称：",
-        widgetProps: "微件属性："
+        widgetProps: "微件属性：",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

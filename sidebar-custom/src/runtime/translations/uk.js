@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Властивості віджету",
         widgetFunctions: "Функції віджету",
         widgetName: "назва віджету:",
-        widgetProps: "властивості віджету:"
+        widgetProps: "властивості віджету:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Vidina omadused",
         widgetFunctions: "Vidina funktsioonid",
         widgetName: "vidina nimi:",
-        widgetProps: "vidina omadused:"
+        widgetProps: "vidina omadused:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Ιδιότητες του widget",
         widgetFunctions: "Λειτουργίες του widget",
         widgetName: "όνομα του widget:",
-        widgetProps: "ιδιότητες του widget:"
+        widgetProps: "ιδιότητες του widget:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

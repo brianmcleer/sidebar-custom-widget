@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Thuộc tính tiện ích",
         widgetFunctions: "Chức năng tiện ích",
         widgetName: "tên tiện ích:",
-        widgetProps: "thuộc tính tiện ích:"
+        widgetProps: "thuộc tính tiện ích:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

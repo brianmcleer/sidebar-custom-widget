@@ -11,7 +11,11 @@ System.register([], function (e) {
         widgetProperties: "Valdiklio savybės",
         widgetFunctions: "Valdiklio funkcijos",
         widgetName: "valdiklio pavadinimas:",
-        widgetProps: "valdiklio savybės:"
+        widgetProps: "valdiklio savybės:",
+        noLayoutComponent: "No layout component!",
+        unknownError: "unknown error",
+        unserializableError: "unserializable error",
+        online101: "Online 10.1."
       })
     }
   }

@@ -1,9 +1,10 @@
 import { BaseVersionManager } from 'jimu-core'
+import { __t } from './runtime/i18n-t'
 
 class VersionManager extends BaseVersionManager {
   versions = [{
     version: '1.8.0',
-    description: 'Online 10.1.',
+    description: __t("online101"),
     upgrader: (oldConfig) => {
       let newConfig = oldConfig
 

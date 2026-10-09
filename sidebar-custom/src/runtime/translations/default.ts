@@ -7,5 +7,9 @@ export default {
   widgetProperties: 'Widget properties',
   widgetFunctions: 'Widget functions',
   widgetName: 'widget name:',
-  widgetProps: 'widget properties:'
+  widgetProps: 'widget properties:',
+  noLayoutComponent: 'No layout component!',
+  unknownError: 'unknown error',
+  unserializableError: 'unserializable error',
+  online101: 'Online 10.1.'
 }
