@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Funcions del widget",
         widgetName: "nom del widget:",
         widgetProps: "propietats del widget:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "No hi ha component de disposició!",
+        unknownError: "error desconegut",
+        unserializableError: "Error no llegible",
+        online101: "En línia 10.1."
       })
     }
   }

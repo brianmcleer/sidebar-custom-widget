@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "위젯 기능",
         widgetName: "위젯 이름:",
         widgetProps: "위젯 속성:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "레이아웃 구성 요소 없음!",
+        unknownError: "알 수없는 오류",
+        unserializableError: "unserializable 오류",
+        online101: "온라인 10.1."
       })
     }
   }

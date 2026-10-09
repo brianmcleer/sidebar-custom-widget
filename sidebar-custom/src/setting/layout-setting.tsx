@@ -951,8 +951,8 @@ class Setting extends React.PureComponent<Props & StateToProps, SettingState> {
                         <SettingRow tag='label' label={__t("altOption")}>
                             <Switch aria-label={__t("altOrOption")} checked={config.keyboard?.alt ?? false} onChange={this.updateKeyboardAlt} />
                         </SettingRow>
-                        <SettingRow tag='label' label='Shift'>
-                            <Switch aria-label='Shift' checked={config.keyboard?.shift ?? false} onChange={this.updateKeyboardShift} />
+                        <SettingRow tag='label' label={__t("shift")}>
+                            <Switch aria-label={__t("shift")} checked={config.keyboard?.shift ?? false} onChange={this.updateKeyboardShift} />
                         </SettingRow>
                     </Collapse>
 

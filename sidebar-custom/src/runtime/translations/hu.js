@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Widget függvényei",
         widgetName: "widget neve:",
         widgetProps: "widget tulajdonságai:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Nincs elrendezési elem!",
+        unknownError: "ismeretlen hiba",
+        unserializableError: "nem sorozható hiba",
         online101: "Online 10.1."
       })
     }

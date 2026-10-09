@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "微件功能",
         widgetName: "微件名称：",
         widgetProps: "微件属性：",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "没有布局组件 !",
+        unknownError: "未知错误",
+        unserializableError: "无序错误",
+        online101: "在线 10.1."
       })
     }
   }

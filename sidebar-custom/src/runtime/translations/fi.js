@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Pienoisohjelman toiminnot",
         widgetName: "pienoisohjelman nimi:",
         widgetProps: "pienoisohjelman ominaisuudet:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Ei layout-komponenttia!",
+        unknownError: "tuntematon virhe",
+        unserializableError: "epätavallinen virhe",
         online101: "Online 10.1."
       })
     }

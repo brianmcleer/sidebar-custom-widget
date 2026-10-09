@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Vidina funktsioonid",
         widgetName: "vidina nimi:",
         widgetProps: "vidina omadused:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Ei mingit paigutuskomponenti!",
+        unknownError: "tundmatu viga",
+        unserializableError: "seeriaviisiline viga",
         online101: "Online 10.1."
       })
     }

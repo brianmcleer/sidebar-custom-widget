@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "ウィジェット関数",
         widgetName: "ウィジェット名:",
         widgetProps: "ウィジェットのプロパティ:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "レイアウトコンポーネントなし!",
+        unknownError: "未知のエラー",
+        unserializableError: "unserializable エラー",
+        online101: "オンライン 10.1."
       })
     }
   }

@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Fungsi widget",
         widgetName: "nama widget:",
         widgetProps: "properti widget:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Tidak ada komponen tata letak!",
+        unknownError: "galat tak dikenal",
+        unserializableError: "kesalahan tidak serialisasi",
         online101: "Online 10.1."
       })
     }

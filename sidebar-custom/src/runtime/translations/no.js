@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Miniprogramfunksjoner",
         widgetName: "Navn på miniprogram:",
         widgetProps: "Miniprogramegenskaper:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Ingen layout komponent!",
+        unknownError: "ukjent feil",
+        unserializableError: "uiserbar feil",
         online101: "Online 10.1."
       })
     }

@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Chức năng tiện ích",
         widgetName: "tên tiện ích:",
         widgetProps: "thuộc tính tiện ích:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "Không có thành phần bố trí!",
+        unknownError: "lỗi không rõ",
+        unserializableError: "Lỗi không thể gửi đi được",
+        online101: "Trên mạng 10.1."
       })
     }
   }

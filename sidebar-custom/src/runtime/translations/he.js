@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "פונקציות ווידג'ט",
         widgetName: "שם ווידג'ט:",
         widgetProps: "מאפייני ווידג'ט:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "אין רכיב פריסה!",
+        unknownError: "טעות לא ידועה",
+        unserializableError: "טעות בלתי אפשרית",
+        online101: "באינטרנט 10.1."
       })
     }
   }

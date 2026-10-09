@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "ฟังก์ชันของวิดเจ็ต",
         widgetName: "ชื่อของวิดเจ็ต:",
         widgetProps: "คุณสมบัติของวิดเจ็ต:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "ไม่มีส่วนประกอบผังแป้นพิมพ์!",
+        unknownError: "ข้อผิดพลาดไม่ทราบสาเหตุ",
+        unserializableError: "ข้อผิดพลาดที่ไม่สามารถตรวจสอบได้",
         online101: "Online 10.1."
       })
     }

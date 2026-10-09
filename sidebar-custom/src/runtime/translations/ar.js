@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "وظائف عنصر واجهة المستخدم",
         widgetName: "اسم عنصر واجهة المستخدم",
         widgetProps: "خصائص عنصر واجهة المستخدم:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "لا عنصر تخطيط!",
+        unknownError: "خطأ مجهول",
+        unserializableError: "خطأ غير معقول",
         online101: "Online 10.1."
       })
     }

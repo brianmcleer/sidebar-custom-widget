@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Функции на изпълнимия модул",
         widgetName: "име на изпълнимия модул:",
         widgetProps: "свойства на изпълнимия модул:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "Няма макетен компонент!",
+        unknownError: "неизвестна грешка",
+        unserializableError: "несериозна грешка",
+        online101: "Онлайн 10.1."
       })
     }
   }

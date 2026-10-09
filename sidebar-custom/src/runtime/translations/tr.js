@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Araç işlevleri",
         widgetName: "araç adı:",
         widgetProps: "araç özellikleri:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Hiçbir düzen bileşeni yok!",
+        unknownError: "Bilinmeyen hata",
+        unserializableError: "Başarısız olmayan hata",
         online101: "Online 10.1."
       })
     }

@@ -12,9 +12,9 @@ System.register([], function (e) {
         widgetFunctions: "Funkce widgetu",
         widgetName: "Název widgetu:",
         widgetProps: "Vlastnosti widgetu:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
+        noLayoutComponent: "Žádná součástka!",
+        unknownError: "neznámá chyba",
+        unserializableError: "neserializovatelná chyba",
         online101: "Online 10.1."
       })
     }

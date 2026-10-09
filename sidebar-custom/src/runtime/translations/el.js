@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Λειτουργίες του widget",
         widgetName: "όνομα του widget:",
         widgetProps: "ιδιότητες του widget:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "Δεν υπάρχει διάταξη!",
+        unknownError: "άγνωστο σφάλμα",
+        unserializableError: "σφάλμα μη ανιχνεύσιμο",
+        online101: "Σε σύνδεση 10.1."
       })
     }
   }

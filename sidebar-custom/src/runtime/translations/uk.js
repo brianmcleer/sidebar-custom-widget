@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Функції віджету",
         widgetName: "назва віджету:",
         widgetProps: "властивості віджету:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "Немає компонента макета!",
+        unknownError: "Невідома помилка",
+        unserializableError: "несеріалізована помилка",
+        online101: "Онлайн 10.1."
       })
     }
   }

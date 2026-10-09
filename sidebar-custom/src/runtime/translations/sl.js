@@ -12,10 +12,10 @@ System.register([], function (e) {
         widgetFunctions: "Funkcije pripomočka",
         widgetName: "ime pripomočka:",
         widgetProps: "lastnosti pripomočka:",
-        noLayoutComponent: "No layout component!",
-        unknownError: "unknown error",
-        unserializableError: "unserializable error",
-        online101: "Online 10.1."
+        noLayoutComponent: "Ni komponente razporeda!",
+        unknownError: "neznana napaka",
+        unserializableError: "Neizvedljiva napaka",
+        online101: "Na spletu 10.1."
       })
     }
   }

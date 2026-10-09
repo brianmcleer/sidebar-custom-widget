@@ -55,5 +55,6 @@ export default {
   panelHeaderWithPinAndClose: 'Panel header with pin and close',
   publishExpandCollapseMessage: 'Publish expand/collapse message',
   publishExpandAndCollapseMessage: 'Publish expand and collapse message',
-  rememberStateInUrl: 'Remember state in URL'
+  rememberStateInUrl: 'Remember state in URL',
+  shift: 'Shift'
 }
