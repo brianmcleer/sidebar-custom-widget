@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "@ info: tooltip",
         publishExpandAndCollapseMessage: "Publikovať rozšírenie a kolaps správy",
         rememberStateInUrl: "Zapamätať stav v URL",
-        shift: "Shift"
+        shift: "Zmena"
       })
     }
   }

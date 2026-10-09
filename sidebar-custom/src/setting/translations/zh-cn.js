@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "发布扩展/拼贴消息",
         publishExpandAndCollapseMessage: "发布扩展和崩溃消息",
         rememberStateInUrl: "在 URL 中记住状态",
-        shift: "Shift"
+        shift: "移动"
       })
     }
   }

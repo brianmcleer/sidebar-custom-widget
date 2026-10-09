@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Julkaise laajennus-/kollapsiviesti",
         publishExpandAndCollapseMessage: "Julkaise laajennus- ja romahdusviesti",
         rememberStateInUrl: "Muista tila URL-osoitteessa",
-        shift: "Shift"
+        shift: "Vaihto"
       })
     }
   }

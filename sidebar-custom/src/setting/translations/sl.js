@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Objava sporočila o širitvi/zapletu",
         publishExpandAndCollapseMessage: "Objavi širjenje in sesutje sporočila",
         rememberStateInUrl: "Zapomni si stanje v URL- ju",
-        shift: "Shift"
+        shift: "Premakni"
       })
     }
   }

@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publicera expand/collapse meddelande",
         publishExpandAndCollapseMessage: "Publicera expandera och kollapsa meddelande",
         rememberStateInUrl: "Kom ihåg tillstånd i URL",
-        shift: "Shift"
+        shift: "Skift"
       })
     }
   }

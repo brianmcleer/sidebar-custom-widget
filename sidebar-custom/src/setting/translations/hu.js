@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Kibővítési / összeomlási üzenet közzététele",
         publishExpandAndCollapseMessage: "A bővítési és összeomlási üzenet közzététele",
         rememberStateInUrl: "Emlékezzen az URL állapotára",
-        shift: "Shift"
+        shift: "Változás"
       })
     }
   }

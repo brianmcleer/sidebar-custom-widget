@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "公開 拡大/縮小 メッセージ",
         publishExpandAndCollapseMessage: "公開メッセージの展開と崩壊",
         rememberStateInUrl: "URL の状態を記憶する",
-        shift: "Shift"
+        shift: "シフト"
       })
     }
   }

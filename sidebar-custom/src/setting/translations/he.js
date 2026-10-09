@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "הודעה מורחבת / Collapse",
         publishExpandAndCollapseMessage: "להפיץ את המסר והתמוטטות",
         rememberStateInUrl: "לזכור מצב בכתובת URL",
-        shift: "Shift"
+        shift: "Shift Shift"
       })
     }
   }

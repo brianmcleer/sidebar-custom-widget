@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publica el missatge \" expandeix/col\"",
         publishExpandAndCollapseMessage: "Publica i deixa anar el missatge",
         rememberStateInUrl: "Recorda l' estat en l' URL",
-        shift: "Shift"
+        shift: "Majús"
       })
     }
   }

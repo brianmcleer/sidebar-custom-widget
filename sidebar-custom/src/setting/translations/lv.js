@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publicēt paplašinājumu/kolapsu ziņojumu",
         publishExpandAndCollapseMessage: "Publicēt paplašināšanas un sabrukšanas ziņojumu",
         rememberStateInUrl: "Atcerēties stāvokli URL",
-        shift: "Shift"
+        shift: "Pārbīdīt"
       })
     }
   }

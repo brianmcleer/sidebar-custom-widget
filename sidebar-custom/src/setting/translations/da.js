@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Udgiv ekspanderende / kollaps meddelelse",
         publishExpandAndCollapseMessage: "Udgiv besked om udvidelse og kollaps",
         rememberStateInUrl: "Husk tilstand i URL",
-        shift: "Shift"
+        shift: "Skift"
       })
     }
   }

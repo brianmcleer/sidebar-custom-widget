@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Δημοσιεύστε το μήνυμα επέκτασης/ κατάρρευσης",
         publishExpandAndCollapseMessage: "Δημοσίευση μηνύματος επέκτασης και κατάρρευσης",
         rememberStateInUrl: "Απομνημόνευση κατάστασης στο URL",
-        shift: "Shift"
+        shift: "Μετακίνηση"
       })
     }
   }

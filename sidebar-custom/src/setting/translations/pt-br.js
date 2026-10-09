@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publicar mensagem de expansão/colapso",
         publishExpandAndCollapseMessage: "Publicar mensagem de expansão e colapso",
         rememberStateInUrl: "Lembre-se do estado em URL",
-        shift: "Shift"
+        shift: "Troque."
       })
     }
   }

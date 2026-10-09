@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Công bố mở/tắt thông điệp",
         publishExpandAndCollapseMessage: "Xuất bản thông điệp mở rộng và sụp đổ",
         rememberStateInUrl: "Hãy nhớ tình trạng trong URL",
-        shift: "Shift"
+        shift: "Dịch:"
       })
     }
   }

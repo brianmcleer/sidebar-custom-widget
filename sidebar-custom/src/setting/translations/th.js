@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "เผยแพร่/ พิมพ์ต่อเนื่องข้อความ",
         publishExpandAndCollapseMessage: "เผยแพร่และยุบข้อความ",
         rememberStateInUrl: "จดจําสถานะที่อยู่ URL",
-        shift: "Shift"
+        shift: "เลื่อนบิต"
       })
     }
   }

@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publiser utvide/kollaps-melding",
         publishExpandAndCollapseMessage: "Publiser utvidelse og sammenslå melding",
         rememberStateInUrl: "Husk tilstand i URL",
-        shift: "Shift"
+        shift: "Skift"
       })
     }
   }

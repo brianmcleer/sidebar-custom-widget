@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Публікація Подробиці",
         publishExpandAndCollapseMessage: "Публікація Подробиці та згортання повідомлення",
         rememberStateInUrl: "Пам'ятний стан у URL",
-        shift: "Shift"
+        shift: "Шиф"
       })
     }
   }

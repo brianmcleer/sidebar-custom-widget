@@ -841,9 +841,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 5,
+            "machine": 6,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "sidebarBehavior": {
@@ -870,20 +870,25 @@
               "t": "تذكّرْ الحالةَ في URL",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "bg": {
-          "file": "e7deae768cac",
+          "file": "f30828a8d060",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -895,6 +900,11 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
+            },
+            "shift": {
+              "t": "Смяна",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -913,36 +923,41 @@
           "entries": {}
         },
         "ca": {
-          "file": "49c113ce425a",
+          "file": "db01d49fb3b9",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Majús",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "cs": {
-          "file": "b323fa7434c7",
+          "file": "f8013b36e661",
           "counts": {
             "esri": 53,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 1,
-            "machine": 3,
+            "machine": 4,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "square": {
@@ -964,20 +979,25 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
+            },
+            "shift": {
+              "t": "Posun",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "da": {
-          "file": "8f9d93ef3f70",
+          "file": "630c36d6cc9f",
           "counts": {
             "esri": 51,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 5,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "overlay": {
@@ -999,20 +1019,25 @@
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
+            },
+            "shift": {
+              "t": "Skift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "de": {
-          "file": "b36670d4eb44",
+          "file": "1324b764805b",
           "counts": {
             "esri": 53,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 4,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "widgetControllerMode": {
@@ -1029,40 +1054,50 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Umschaltung",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "el": {
-          "file": "f5d0a24cb111",
+          "file": "e2250884c829",
           "counts": {
             "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Μετακίνηση",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "es": {
-          "file": "801bc385e96d",
+          "file": "b38c16126be8",
           "counts": {
             "esri": 50,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 7,
+            "machine": 8,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "sidebarBehavior": {
@@ -1099,6 +1134,11 @@
               "t": "Panel header (pin and close)",
               "src": "machine",
               "h": "729b5a988f09"
+            },
+            "shift": {
+              "t": "Cambio",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1110,9 +1150,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1124,20 +1164,25 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "fi": {
-          "file": "6a813c4aa4f1",
+          "file": "7048d3a07374",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "linkedController": {
@@ -1149,20 +1194,25 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Vaihto",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "fr": {
-          "file": "d1cde169bad0",
+          "file": "60ec6f457f80",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1174,20 +1224,25 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
+            },
+            "shift": {
+              "t": "Déplacement",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "he": {
-          "file": "397b421acbbb",
+          "file": "da82c26b6a9e",
           "counts": {
             "esri": 54,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 4,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1204,6 +1259,11 @@
               "t": "לזכור מצב בכתובת URL",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "Shift Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1222,22 +1282,27 @@
           "entries": {}
         },
         "hu": {
-          "file": "ccf9d610d406",
+          "file": "d40fb33f5720",
           "counts": {
             "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Változás",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1249,9 +1314,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 5,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "overlay": {
@@ -1273,6 +1338,11 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1284,55 +1354,70 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "ja": {
-          "file": "cb366b39eab5",
+          "file": "481a3122de27",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "rememberStateInUrl": {
               "t": "URL の状態を記憶する",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "シフト",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "ko": {
-          "file": "ea8ff4412c6c",
+          "file": "6af8467af423",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "rememberStateInUrl": {
               "t": "URL에서 상태 기억하기",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "기타",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1344,29 +1429,34 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "lv": {
-          "file": "c951d2719d05",
+          "file": "255967b05852",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1378,26 +1468,36 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Pārbīdīt",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "no": {
-          "file": "aa67e9ec591e",
+          "file": "dab68f645bd6",
           "counts": {
             "esri": 54,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "breakpointPx": {
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
+            },
+            "shift": {
+              "t": "Skift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1409,9 +1509,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 4,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "overlay": {
@@ -1428,6 +1528,11 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1439,9 +1544,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 4,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1458,20 +1563,25 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "pt-br": {
-          "file": "4d1afd7afb67",
+          "file": "196bed251485",
           "counts": {
             "esri": 54,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "scan": {
@@ -1483,40 +1593,50 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Troque.",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "pt-pt": {
-          "file": "ad14d38267c1",
+          "file": "28846d8ffd9d",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Deslocar",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "ro": {
-          "file": "def0de9379e1",
+          "file": "7a64c1ed1e3f",
           "counts": {
             "esri": 53,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 2
+            "missing": 1
           },
           "entries": {
             "ctrlCmd": {
@@ -1528,34 +1648,45 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Schimbare",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "ru": {
-          "file": "2a558c7fe1b7",
+          "file": "aec51c1ebad3",
           "counts": {
             "esri": 55,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 0,
+            "machine": 1,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
-          "entries": {}
+          "entries": {
+            "shift": {
+              "t": "сдвиг",
+              "src": "machine",
+              "h": "469d5b183fdc"
+            }
+          }
         },
         "sk": {
-          "file": "b5810d2687b3",
+          "file": "95c934d8098c",
           "counts": {
             "esri": 52,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 3
+            "missing": 2
           },
           "entries": {
             "ctrlCmd": {
@@ -1567,26 +1698,36 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
+            },
+            "shift": {
+              "t": "Zmena",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "sl": {
-          "file": "1e23bd3cd853",
+          "file": "7a8cead235cc",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 2
+            "missing": 1
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Premakni",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1605,16 +1746,16 @@
           "entries": {}
         },
         "sv": {
-          "file": "fe9a96134ce7",
+          "file": "9aebfe14c40b",
           "counts": {
             "esri": 50,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 6,
+            "machine": 7,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "sidebarBehavior": {
@@ -1646,20 +1787,25 @@
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
+            },
+            "shift": {
+              "t": "Skift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "th": {
-          "file": "5e839414c877",
+          "file": "0f09e58cefde",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
@@ -1671,6 +1817,11 @@
               "t": "จดจําสถานะที่อยู่ URL",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "เลื่อนบิต",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
@@ -1682,9 +1833,9 @@
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 9,
+            "machine": 10,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "attributeTable": {
@@ -1731,20 +1882,25 @@
               "t": "Update badge on toggle",
               "src": "machine",
               "h": "fec34f06172a"
+            },
+            "shift": {
+              "t": "Shift",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "zh-cn": {
-          "file": "3313792fd3a6",
+          "file": "5a8a9a45194f",
           "counts": {
             "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 3,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "clickScanThenSelectAWidget": {
@@ -1756,86 +1912,111 @@
               "t": "在 URL 中记住状态",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "移动",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "uk": {
-          "file": "2371ea0148e9",
+          "file": "58941944f3ed",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Шиф",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "vi": {
-          "file": "e3fb5efebadf",
+          "file": "15dfc0ac0867",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
+            },
+            "shift": {
+              "t": "Dịch:",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "zh-hk": {
-          "file": "869a8de17628",
+          "file": "afc03af04f8e",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "rememberStateInUrl": {
               "t": "記得 URL 中的狀態",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "移動",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         },
         "zh-tw": {
-          "file": "869a8de17628",
+          "file": "afc03af04f8e",
           "counts": {
             "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 2,
             "stale": 0,
-            "missing": 1
+            "missing": 0
           },
           "entries": {
             "rememberStateInUrl": {
               "t": "記得 URL 中的狀態",
               "src": "machine",
               "h": "c137a8dc3ceb"
+            },
+            "shift": {
+              "t": "移動",
+              "src": "machine",
+              "h": "469d5b183fdc"
             }
           }
         }

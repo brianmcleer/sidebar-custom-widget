@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "확장/복사 메시지",
         publishExpandAndCollapseMessage: "확장 및 붕괴 메시지",
         rememberStateInUrl: "URL에서 상태 기억하기",
-        shift: "Shift"
+        shift: "기타"
       })
     }
   }

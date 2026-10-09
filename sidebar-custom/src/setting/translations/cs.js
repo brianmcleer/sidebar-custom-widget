@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Publikovat zprávu rozšíření / zhroucení",
         publishExpandAndCollapseMessage: "Publikovat zprávu o rozšíření a kolapsu",
         rememberStateInUrl: "Zapamatovat stav v URL",
-        shift: "Shift"
+        shift: "Posun"
       })
     }
   }
