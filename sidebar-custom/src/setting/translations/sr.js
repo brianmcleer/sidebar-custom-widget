@@ -29,17 +29,17 @@ System.register([], function (e) {
         sidebarAutoExpandsWhenATool: "Bočna traka se automatski širi kada se alat otvori iz povezanog Widget Controllera, i kolabira kada je alat zatvoren. Kontrolerova alatna ploča se ponovo postavlja u ovu bočnu traku.",
         linkedController: "Povezani kontroler",
         selectAWidget: "— Izaberi grafički element —",
-        scan: "Skeniraj.",
+        scan: "Skeniraj",
         clear: "Obriši",
         clickScanThenSelectAWidget: "Kliknite na Sken a zatim odaberite Widget Controller ispod da biste završili podešavanje.",
         click: "Kliknite",
         toPopulateTheDropdownWithAll: "da naselite pad sa svim vidžetima u vašoj aplikaciji, onda odaberite Widget Controller čiji alati treba da se pojave u ovoj bočnoj traci.",
         behavior: "Ponašanje",
         autoExpandOnTableOpen: "Auto-raširenost na stolu otvorena",
-        autoExpandOnControllerOpen: "Automatsko širenje na upravljaèu otvoreno.",
-        respectReducedMotion: "Poštuj smanjeni predlog.",
+        autoExpandOnControllerOpen: "Automatsko širenje na upravljaèu otvoreno",
+        respectReducedMotion: "Poštuj smanjeni predlog",
         keyboardShortcut: "Kratica tastature",
-        key: "Kljuè.",
+        key: "Kljuè",
         shortcutKey: "Kratica",
         ctrlCmd: "Ctrl / Cmd",
         ctrlOrCmd: "Ctrl ili Cmd",
@@ -52,7 +52,7 @@ System.register([], function (e) {
         expandedSize: "Проширена величинаQShortcut",
         _600px: "600px",
         peekOnHover: "Peek na lebdenju",
-        hoverDelayMs: "одлагање ховера (ms)",
+        hoverDelayMs: "Одлагање ховера (ms)",
         hoverDelayInMilliseconds: "Zakašnjenje u milisekundama",
         updateBadgeOnToggle: "Ažuriraj značku na prekidaču",
         panelHeaderPinAndClose: "Zaglavlje ploče (pin i zatvori)",
@@ -60,7 +60,7 @@ System.register([], function (e) {
         publishExpandCollapseMessage: "Објављује ширење/завршење поруке",
         publishExpandAndCollapseMessage: "Objavi poruku o proširenju i rušenju",
         rememberStateInUrl: "Zapamti stanje u URL- u",
-        shift: "Pomeri se."
+        shift: "Pomeri se"
       })
     }
   }

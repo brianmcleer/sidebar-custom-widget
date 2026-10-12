@@ -68,31 +68,16 @@
         "bs": {
           "file": "e595d8a9db6b",
           "counts": {
-            "esri": 8,
+            "esri": 11,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
           "entries": {
-            "noLayoutComponent": {
-              "t": "Bez komponenti rasporeda!",
-              "src": "machine",
-              "h": "cf0c96cf9a53"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
-            },
             "online101": {
               "t": "Online 10.1.",
               "src": "machine",
@@ -295,31 +280,16 @@
         "hr": {
           "file": "345295081e08",
           "counts": {
-            "esri": 8,
+            "esri": 11,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
           "entries": {
-            "noLayoutComponent": {
-              "t": "Nema raspored komponenti!",
-              "src": "machine",
-              "h": "cf0c96cf9a53"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
-            },
             "online101": {
               "t": "Online 10.1.",
               "src": "machine",
@@ -663,31 +633,16 @@
         "sr": {
           "file": "b94962b763b6",
           "counts": {
-            "esri": 8,
+            "esri": 11,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
           "entries": {
-            "noLayoutComponent": {
-              "t": "Nema komponente!",
-              "src": "machine",
-              "h": "cf0c96cf9a53"
-            },
-            "unknownError": {
-              "t": "nepoznata greška",
-              "src": "machine",
-              "h": "af6321ca7a8b"
-            },
-            "unserializableError": {
-              "t": "Neserijalizacijska greška",
-              "src": "machine",
-              "h": "76e73551597a"
-            },
             "online101": {
               "t": "Online 10.1.",
               "src": "machine",
@@ -944,238 +899,8 @@
         "bg": {
           "file": "f30828a8d060",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
-            "community": 0,
-            "manual": 0,
-            "existing": 0,
-            "machine": 3,
-            "stale": 0,
-            "missing": 0
-          },
-          "entries": {
-            "ctrlCmd": {
-              "t": "Ctrl / Cmd",
-              "src": "machine",
-              "h": "bf592662523e"
-            },
-            "altOption": {
-              "t": "Alt / Option",
-              "src": "machine",
-              "h": "fb9b29c6f39a"
-            },
-            "shift": {
-              "t": "Смяна",
-              "src": "machine",
-              "h": "469d5b183fdc"
-            }
-          }
-        },
-        "bs": {
-          "file": "c05e63044113",
-          "counts": {
-            "esri": 21,
-            "esri-check": 0,
-            "community": 0,
-            "manual": 0,
-            "existing": 0,
-            "machine": 37,
-            "stale": 0,
-            "missing": 0
-          },
-          "entries": {
-            "couldNotReadWidgetsFromApp": {
-              "t": "Nisam mogao pročitati grafičke elemente iz aplikacijske konfiguracije.",
-              "src": "machine",
-              "h": "467c74bd45ba"
-            },
-            "sidebarBehavior": {
-              "t": "Ponašanje bočne trake",
-              "src": "machine",
-              "h": "823e4a751c89"
-            },
-            "attributeTable": {
-              "t": "Atributi",
-              "src": "machine",
-              "h": "3e605d901898"
-            },
-            "attributeTableMode": {
-              "t": "Način rada atributa",
-              "src": "machine",
-              "h": "ff301bbd31b6"
-            },
-            "sidebarAutoExpandsWhenAnAttribute": {
-              "t": "Automatsko proširenje u bočnoj traci kada se otvori tabela osobina (npr. iz radnje osobine iliDodaj u tabelu. Nije potrebno dodatno podešavanje — samo stavite grafički element tablice unutar ove bočne trake savijajući panel.",
-              "src": "machine",
-              "h": "c29b0b2dd034"
-            },
-            "widgetControllerMode": {
-              "t": "Kontrolor widgeta",
-              "src": "machine",
-              "h": "d0bcd935b588"
-            },
-            "sidebarAutoExpandsWhenATool": {
-              "t": "Automatsko proširenje bočne trake kada je alat otvoren iz povezanog upravljača Widgeta, i ruši se kada je alat zatvoren. Alatna ploča upravljača je ponovo postavljena u ovu bočnu traku.",
-              "src": "machine",
-              "h": "c758cf7552f6"
-            },
-            "linkedController": {
-              "t": "Linkoviti kontroler",
-              "src": "machine",
-              "h": "736656f94030"
-            },
-            "selectAWidget": {
-              "t": "_Izaberi grafički element",
-              "src": "machine",
-              "h": "755320bd0c62"
-            },
-            "scan": {
-              "t": "Skeniraj",
-              "src": "machine",
-              "h": "28cba55d2aad"
-            },
-            "clickScanThenSelectAWidget": {
-              "t": "Kliknite na Scan pa izaberite kontrolator widgeta ispod da biste završili podešavanje.",
-              "src": "machine",
-              "h": "f5a3d5c98e29"
-            },
-            "toPopulateTheDropdownWithAll": {
-              "t": "za naseljavanje pada sa svim grafičkim elementima u vašoj aplikaciji, zatim izaberite Widget Controller čiji će se alati pojaviti u ovoj bočnoj traci.",
-              "src": "machine",
-              "h": "f7c33c2441ca"
-            },
-            "autoExpandOnTableOpen": {
-              "t": "Automatsko proširenje na stolu je otvoreno",
-              "src": "machine",
-              "h": "1f575de03d06"
-            },
-            "autoExpandOnControllerOpen": {
-              "t": "Automatsko proširenje pri otvaranju kontrolera",
-              "src": "machine",
-              "h": "441f0ce19610"
-            },
-            "respectReducedMotion": {
-              "t": "Poštuj smanjeni prijedlog",
-              "src": "machine",
-              "h": "099e9980d62f"
-            },
-            "keyboardShortcut": {
-              "t": "Kratica tastature",
-              "src": "machine",
-              "h": "eaf4553509c2"
-            },
-            "key": {
-              "t": "Ključ",
-              "src": "machine",
-              "h": "c67dd20ee842"
-            },
-            "shortcutKey": {
-              "t": "Kratica",
-              "src": "machine",
-              "h": "3e4bd7ecd516"
-            },
-            "ctrlCmd": {
-              "t": "Ctrl / Cmd",
-              "src": "machine",
-              "h": "bf592662523e"
-            },
-            "ctrlOrCmd": {
-              "t": "Ctrl ili Cmd",
-              "src": "machine",
-              "h": "2eed1ecbc46f"
-            },
-            "altOption": {
-              "t": "Opcija Alt /",
-              "src": "machine",
-              "h": "fb9b29c6f39a"
-            },
-            "altOrOption": {
-              "t": "Alt ili Opcija",
-              "src": "machine",
-              "h": "056315bc2f27"
-            },
-            "collapseOnSmallScreens": {
-              "t": "Sažmi na malim ekranima",
-              "src": "machine",
-              "h": "07ca65b40afd"
-            },
-            "breakpointPx": {
-              "t": "Mjesto prekida",
-              "src": "machine",
-              "h": "471fd5ad7b00"
-            },
-            "breakpointInPixels": {
-              "t": "Mjesto prekida",
-              "src": "machine",
-              "h": "266abdb7d9bd"
-            },
-            "widenForToolsAndTables": {
-              "t": "Raširi za alate i stolove",
-              "src": "machine",
-              "h": "1e326902c20b"
-            },
-            "expandedSize": {
-              "t": "Proširena veličina",
-              "src": "machine",
-              "h": "278c1afd653b"
-            },
-            "peekOnHover": {
-              "t": "Peek na lebdenju",
-              "src": "machine",
-              "h": "7be707978ab7"
-            },
-            "hoverDelayMs": {
-              "t": "Kasni s hoverom (ms)",
-              "src": "machine",
-              "h": "9dc91b10aecd"
-            },
-            "hoverDelayInMilliseconds": {
-              "t": "Vrijeme kašnjenja u milisekundama",
-              "src": "machine",
-              "h": "0838a0192b6d"
-            },
-            "updateBadgeOnToggle": {
-              "t": "Ažuriraj značku na preklopnoj ploči",
-              "src": "machine",
-              "h": "fec34f06172a"
-            },
-            "panelHeaderPinAndClose": {
-              "t": "Zaglavlje ploče (pin i zatvaranje)",
-              "src": "machine",
-              "h": "729b5a988f09"
-            },
-            "panelHeaderWithPinAndClose": {
-              "t": "Zaglavlje ploče sa pin i zatvaranjem",
-              "src": "machine",
-              "h": "9bf80fc05ea3"
-            },
-            "publishExpandCollapseMessage": {
-              "t": "Objavi proširenje/kolaps poruku",
-              "src": "machine",
-              "h": "20858c9e57d4"
-            },
-            "publishExpandAndCollapseMessage": {
-              "t": "Objavi proširenje i urušavanje poruke",
-              "src": "machine",
-              "h": "0d9d5883908d"
-            },
-            "rememberStateInUrl": {
-              "t": "Zapamti stanje u URL-u",
-              "src": "machine",
-              "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "Pomjeri",
-              "src": "machine",
-              "h": "469d5b183fdc"
-            }
-          }
-        },
-        "ca": {
-          "file": "db01d49fb3b9",
-          "counts": {
-            "esri": 55,
-            "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
@@ -1189,22 +914,62 @@
               "src": "machine",
               "h": "bf592662523e"
             },
-            "shift": {
-              "t": "Majús",
+            "altOption": {
+              "t": "Alt / Option",
               "src": "machine",
-              "h": "469d5b183fdc"
+              "h": "fb9b29c6f39a"
+            }
+          }
+        },
+        "bs": {
+          "file": "c05e63044113",
+          "counts": {
+            "esri": 57,
+            "esri-check": 0,
+            "community": 0,
+            "manual": 0,
+            "existing": 0,
+            "machine": 1,
+            "stale": 0,
+            "missing": 0
+          },
+          "entries": {
+            "ctrlCmd": {
+              "t": "Ctrl / Cmd",
+              "src": "machine",
+              "h": "bf592662523e"
+            }
+          }
+        },
+        "ca": {
+          "file": "db01d49fb3b9",
+          "counts": {
+            "esri": 56,
+            "esri-check": 1,
+            "community": 0,
+            "manual": 0,
+            "existing": 0,
+            "machine": 1,
+            "stale": 0,
+            "missing": 0
+          },
+          "entries": {
+            "ctrlCmd": {
+              "t": "Ctrl / Cmd",
+              "src": "machine",
+              "h": "bf592662523e"
             }
           }
         },
         "cs": {
           "file": "f8013b36e661",
           "counts": {
-            "esri": 53,
+            "esri": 54,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 1,
-            "machine": 4,
+            "machine": 3,
             "stale": 0,
             "missing": 0
           },
@@ -1228,23 +993,18 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
-            },
-            "shift": {
-              "t": "Posun",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "da": {
           "file": "630c36d6cc9f",
           "counts": {
-            "esri": 51,
+            "esri": 52,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 5,
+            "machine": 4,
             "stale": 0,
             "missing": 0
           },
@@ -1268,23 +1028,18 @@
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
-            },
-            "shift": {
-              "t": "Skift",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "de": {
           "file": "1324b764805b",
           "counts": {
-            "esri": 53,
+            "esri": 54,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 3,
             "stale": 0,
             "missing": 0
           },
@@ -1303,23 +1058,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Umschaltung",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "el": {
           "file": "e2250884c829",
           "counts": {
-            "esri": 56,
+            "esri": 57,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -1328,23 +1078,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Μετακίνηση",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "es": {
           "file": "b38c16126be8",
           "counts": {
-            "esri": 50,
+            "esri": 51,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 8,
+            "machine": 7,
             "stale": 0,
             "missing": 0
           },
@@ -1383,11 +1128,6 @@
               "t": "Panel header (pin and close)",
               "src": "machine",
               "h": "729b5a988f09"
-            },
-            "shift": {
-              "t": "Cambio",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
@@ -1424,12 +1164,12 @@
         "fi": {
           "file": "7048d3a07374",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -1443,23 +1183,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Vaihto",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "fr": {
           "file": "60ec6f457f80",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -1473,23 +1208,18 @@
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
-            },
-            "shift": {
-              "t": "Déplacement",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "he": {
           "file": "da82c26b6a9e",
           "counts": {
-            "esri": 54,
+            "esri": 55,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 4,
+            "machine": 3,
             "stale": 0,
             "missing": 0
           },
@@ -1508,223 +1238,38 @@
               "t": "לזכור מצב בכתובת URL",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "Shift Shift",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "hr": {
           "file": "2ac1793f5fcc",
           "counts": {
-            "esri": 21,
+            "esri": 57,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 37,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
           "entries": {
-            "couldNotReadWidgetsFromApp": {
-              "t": "Ne mogu čitati widgete iz aplikacijske konfiguracije.",
-              "src": "machine",
-              "h": "467c74bd45ba"
-            },
-            "sidebarBehavior": {
-              "t": "Ponašanje bočne trake",
-              "src": "machine",
-              "h": "823e4a751c89"
-            },
-            "attributeTable": {
-              "t": "Tabela atributa",
-              "src": "machine",
-              "h": "3e605d901898"
-            },
-            "attributeTableMode": {
-              "t": "Način rada atributa",
-              "src": "machine",
-              "h": "ff301bbd31b6"
-            },
-            "sidebarAutoExpandsWhenAnAttribute": {
-              "t": "Bočna traka se automatski širi kada se otvori tablica atributa (npr. iz radnje značajke iliDodaj u tablicu. Nije potrebno dodatno postavljanje — samo stavite svoj widget tablice unutar ove bočne trake sklopive ploče.",
-              "src": "machine",
-              "h": "c29b0b2dd034"
-            },
-            "widgetControllerMode": {
-              "t": "Način upravljača widgeta",
-              "src": "machine",
-              "h": "d0bcd935b588"
-            },
-            "sidebarAutoExpandsWhenATool": {
-              "t": "Bočna traka se automatski širi kada se alat otvori iz povezanog Widget Controllera, i ruši se kada je alat zatvoren. Alatna ploča upravljača se ponovno postavlja u ovu bočnu traku.",
-              "src": "machine",
-              "h": "c758cf7552f6"
-            },
-            "linkedController": {
-              "t": "Vezani kontroler",
-              "src": "machine",
-              "h": "736656f94030"
-            },
-            "selectAWidget": {
-              "t": "— Odaberite widget —",
-              "src": "machine",
-              "h": "755320bd0c62"
-            },
-            "scan": {
-              "t": "Skeniraj",
-              "src": "machine",
-              "h": "28cba55d2aad"
-            },
-            "clickScanThenSelectAWidget": {
-              "t": "Kliknite na Scan a zatim odaberite Widget Controller ispod završiti postavljanje.",
-              "src": "machine",
-              "h": "f5a3d5c98e29"
-            },
-            "toPopulateTheDropdownWithAll": {
-              "t": "za naseljavanje padanje sa svim widgetima u vašoj aplikaciji, zatim odaberite Widget Controller čiji alati bi se trebali pojaviti u ovoj bočnoj traci.",
-              "src": "machine",
-              "h": "f7c33c2441ca"
-            },
-            "autoExpandOnTableOpen": {
-              "t": "Automatsko proširenje na stolu otvoreno",
-              "src": "machine",
-              "h": "1f575de03d06"
-            },
-            "autoExpandOnControllerOpen": {
-              "t": "Automatski proširi na upravljač otvoren",
-              "src": "machine",
-              "h": "441f0ce19610"
-            },
-            "respectReducedMotion": {
-              "t": "Poštuj smanjeni prijedlog",
-              "src": "machine",
-              "h": "099e9980d62f"
-            },
-            "keyboardShortcut": {
-              "t": "Kratica tastature",
-              "src": "machine",
-              "h": "eaf4553509c2"
-            },
-            "key": {
-              "t": "Ključ",
-              "src": "machine",
-              "h": "c67dd20ee842"
-            },
-            "shortcutKey": {
-              "t": "Tipka prečaca",
-              "src": "machine",
-              "h": "3e4bd7ecd516"
-            },
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "ctrlOrCmd": {
-              "t": "Ctrl ili Cmd",
-              "src": "machine",
-              "h": "2eed1ecbc46f"
-            },
-            "altOption": {
-              "t": "Alt / Opcija",
-              "src": "machine",
-              "h": "fb9b29c6f39a"
-            },
-            "altOrOption": {
-              "t": "Alt ili opcija",
-              "src": "machine",
-              "h": "056315bc2f27"
-            },
-            "collapseOnSmallScreens": {
-              "t": "Sažmi na malim zaslonima",
-              "src": "machine",
-              "h": "07ca65b40afd"
-            },
-            "breakpointPx": {
-              "t": "Mjesto prekida (px)",
-              "src": "machine",
-              "h": "471fd5ad7b00"
-            },
-            "breakpointInPixels": {
-              "t": "Mjesto prekida u pikslama",
-              "src": "machine",
-              "h": "266abdb7d9bd"
-            },
-            "widenForToolsAndTables": {
-              "t": "Proširen za alate i stolove",
-              "src": "machine",
-              "h": "1e326902c20b"
-            },
-            "expandedSize": {
-              "t": "Proširena veličina",
-              "src": "machine",
-              "h": "278c1afd653b"
-            },
-            "peekOnHover": {
-              "t": "Peek na lebdenju",
-              "src": "machine",
-              "h": "7be707978ab7"
-            },
-            "hoverDelayMs": {
-              "t": "Kašnjenje u hodu (ms)",
-              "src": "machine",
-              "h": "9dc91b10aecd"
-            },
-            "hoverDelayInMilliseconds": {
-              "t": "Kašnjenje u milisekundama",
-              "src": "machine",
-              "h": "0838a0192b6d"
-            },
-            "updateBadgeOnToggle": {
-              "t": "Ažuriraj značku na prekidaču",
-              "src": "machine",
-              "h": "fec34f06172a"
-            },
-            "panelHeaderPinAndClose": {
-              "t": "Zaglavlje ploče (pin i zatvaranje)",
-              "src": "machine",
-              "h": "729b5a988f09"
-            },
-            "panelHeaderWithPinAndClose": {
-              "t": "Zaglavlje ploče s pin i zatvoriti",
-              "src": "machine",
-              "h": "9bf80fc05ea3"
-            },
-            "publishExpandCollapseMessage": {
-              "t": "Objavi proširenje/kolapsnu poruku",
-              "src": "machine",
-              "h": "20858c9e57d4"
-            },
-            "publishExpandAndCollapseMessage": {
-              "t": "Objavi poruku o proširenju i urušavanju",
-              "src": "machine",
-              "h": "0d9d5883908d"
-            },
-            "rememberStateInUrl": {
-              "t": "Zapamti stanje u URL- u",
-              "src": "machine",
-              "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "Pomakni",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "hu": {
           "file": "d40fb33f5720",
           "counts": {
-            "esri": 56,
+            "esri": 57,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -1733,11 +1278,6 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Változás",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
@@ -1809,12 +1349,12 @@
         "ja": {
           "file": "481a3122de27",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -1823,23 +1363,18 @@
               "t": "URL の状態を記憶する",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "シフト",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "ko": {
           "file": "6af8467af423",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -1848,11 +1383,6 @@
               "t": "URL에서 상태 기억하기",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "기타",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
@@ -1884,12 +1414,12 @@
         "lv": {
           "file": "255967b05852",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -1903,23 +1433,18 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
-            },
-            "shift": {
-              "t": "Pārbīdīt",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "no": {
           "file": "dab68f645bd6",
           "counts": {
-            "esri": 54,
+            "esri": 55,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -1928,11 +1453,6 @@
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
-            },
-            "shift": {
-              "t": "Skift",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
@@ -2007,14 +1527,14 @@
           }
         },
         "pt-br": {
-          "file": "196bed251485",
+          "file": "c08ab2908d79",
           "counts": {
-            "esri": 54,
+            "esri": 55,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -2028,23 +1548,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Troque.",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "pt-pt": {
           "file": "28846d8ffd9d",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -2053,23 +1568,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Deslocar",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "ro": {
           "file": "7a64c1ed1e3f",
           "counts": {
-            "esri": 53,
+            "esri": 54,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 1
           },
@@ -2083,43 +1593,32 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
-            },
-            "shift": {
-              "t": "Schimbare",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "ru": {
-          "file": "aec51c1ebad3",
+          "file": "7e9f124ea4fc",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 1,
+            "machine": 0,
             "stale": 0,
             "missing": 0
           },
-          "entries": {
-            "shift": {
-              "t": "сдвиг",
-              "src": "machine",
-              "h": "469d5b183fdc"
-            }
-          }
+          "entries": {}
         },
         "sk": {
           "file": "95c934d8098c",
           "counts": {
-            "esri": 52,
+            "esri": 53,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 2
           },
@@ -2133,23 +1632,18 @@
               "t": "Peek on hover",
               "src": "machine",
               "h": "7be707978ab7"
-            },
-            "shift": {
-              "t": "Zmena",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "sl": {
           "file": "7a8cead235cc",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 1
           },
@@ -2158,223 +1652,43 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Premakni",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "sr": {
-          "file": "4254f63ee090",
+          "file": "ee1e5b332803",
           "counts": {
-            "esri": 19,
+            "esri": 54,
             "esri-check": 2,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 37,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
           "entries": {
-            "couldNotReadWidgetsFromApp": {
-              "t": "Ne mogu da pročitam grafičke elemente iz aplikacijske konfiguracije.",
-              "src": "machine",
-              "h": "467c74bd45ba"
-            },
-            "sidebarBehavior": {
-              "t": "Ponašanje bočne trake",
-              "src": "machine",
-              "h": "823e4a751c89"
-            },
-            "attributeTable": {
-              "t": "Табела атрибутаComment",
-              "src": "machine",
-              "h": "3e605d901898"
-            },
-            "attributeTableMode": {
-              "t": "Режим атрибута",
-              "src": "machine",
-              "h": "ff301bbd31b6"
-            },
-            "sidebarAutoExpandsWhenAnAttribute": {
-              "t": "Bočna traka se automatski širi kada se otvori tabela atributa (npr. iz radnje značajke iliDodaj u tabelu. Nije potrebno dodatno podešavanje — samo stavite svoj grafički element tabele unutar ove bočne trake savijajuće ploče.",
-              "src": "machine",
-              "h": "c29b0b2dd034"
-            },
-            "widgetControllerMode": {
-              "t": "Режим управљача виџета",
-              "src": "machine",
-              "h": "d0bcd935b588"
-            },
-            "sidebarAutoExpandsWhenATool": {
-              "t": "Bočna traka se automatski širi kada se alat otvori iz povezanog Widget Controllera, i kolabira kada je alat zatvoren. Kontrolerova alatna ploča se ponovo postavlja u ovu bočnu traku.",
-              "src": "machine",
-              "h": "c758cf7552f6"
-            },
-            "linkedController": {
-              "t": "Povezani kontroler",
-              "src": "machine",
-              "h": "736656f94030"
-            },
-            "selectAWidget": {
-              "t": "— Izaberi grafički element —",
-              "src": "machine",
-              "h": "755320bd0c62"
-            },
-            "scan": {
-              "t": "Skeniraj.",
-              "src": "machine",
-              "h": "28cba55d2aad"
-            },
-            "clickScanThenSelectAWidget": {
-              "t": "Kliknite na Sken a zatim odaberite Widget Controller ispod da biste završili podešavanje.",
-              "src": "machine",
-              "h": "f5a3d5c98e29"
-            },
-            "toPopulateTheDropdownWithAll": {
-              "t": "da naselite pad sa svim vidžetima u vašoj aplikaciji, onda odaberite Widget Controller čiji alati treba da se pojave u ovoj bočnoj traci.",
-              "src": "machine",
-              "h": "f7c33c2441ca"
-            },
-            "autoExpandOnTableOpen": {
-              "t": "Auto-raširenost na stolu otvorena",
-              "src": "machine",
-              "h": "1f575de03d06"
-            },
-            "autoExpandOnControllerOpen": {
-              "t": "Automatsko širenje na upravljaèu otvoreno.",
-              "src": "machine",
-              "h": "441f0ce19610"
-            },
-            "respectReducedMotion": {
-              "t": "Poštuj smanjeni predlog.",
-              "src": "machine",
-              "h": "099e9980d62f"
-            },
-            "keyboardShortcut": {
-              "t": "Kratica tastature",
-              "src": "machine",
-              "h": "eaf4553509c2"
-            },
-            "key": {
-              "t": "Kljuè.",
-              "src": "machine",
-              "h": "c67dd20ee842"
-            },
-            "shortcutKey": {
-              "t": "Kratica",
-              "src": "machine",
-              "h": "3e4bd7ecd516"
-            },
             "ctrlCmd": {
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
             },
-            "ctrlOrCmd": {
-              "t": "Ctrl ili Cmd",
-              "src": "machine",
-              "h": "2eed1ecbc46f"
-            },
             "altOption": {
               "t": "Alt / Option",
               "src": "machine",
               "h": "fb9b29c6f39a"
-            },
-            "altOrOption": {
-              "t": "Alt ili Option",
-              "src": "machine",
-              "h": "056315bc2f27"
-            },
-            "collapseOnSmallScreens": {
-              "t": "Sažmi na malim ekranima",
-              "src": "machine",
-              "h": "07ca65b40afd"
-            },
-            "breakpointPx": {
-              "t": "Prelomna tačka (px)",
-              "src": "machine",
-              "h": "471fd5ad7b00"
-            },
-            "breakpointInPixels": {
-              "t": "Prelomna tačka u pikselima",
-              "src": "machine",
-              "h": "266abdb7d9bd"
-            },
-            "widenForToolsAndTables": {
-              "t": "Prošireni za alate i stolove",
-              "src": "machine",
-              "h": "1e326902c20b"
-            },
-            "expandedSize": {
-              "t": "Проширена величинаQShortcut",
-              "src": "machine",
-              "h": "278c1afd653b"
-            },
-            "peekOnHover": {
-              "t": "Peek na lebdenju",
-              "src": "machine",
-              "h": "7be707978ab7"
-            },
-            "hoverDelayMs": {
-              "t": "одлагање ховера (ms)",
-              "src": "machine",
-              "h": "9dc91b10aecd"
-            },
-            "hoverDelayInMilliseconds": {
-              "t": "Zakašnjenje u milisekundama",
-              "src": "machine",
-              "h": "0838a0192b6d"
-            },
-            "updateBadgeOnToggle": {
-              "t": "Ažuriraj značku na prekidaču",
-              "src": "machine",
-              "h": "fec34f06172a"
-            },
-            "panelHeaderPinAndClose": {
-              "t": "Zaglavlje ploče (pin i zatvori)",
-              "src": "machine",
-              "h": "729b5a988f09"
-            },
-            "panelHeaderWithPinAndClose": {
-              "t": "Zaglavlje ploče sa iglom i zatvaranjem",
-              "src": "machine",
-              "h": "9bf80fc05ea3"
-            },
-            "publishExpandCollapseMessage": {
-              "t": "Објављује ширење/завршење поруке",
-              "src": "machine",
-              "h": "20858c9e57d4"
-            },
-            "publishExpandAndCollapseMessage": {
-              "t": "Objavi poruku o proširenju i rušenju",
-              "src": "machine",
-              "h": "0d9d5883908d"
-            },
-            "rememberStateInUrl": {
-              "t": "Zapamti stanje u URL- u",
-              "src": "machine",
-              "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "Pomeri se.",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "sv": {
           "file": "9aebfe14c40b",
           "counts": {
-            "esri": 50,
+            "esri": 51,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 7,
+            "machine": 6,
             "stale": 0,
             "missing": 0
           },
@@ -2408,23 +1722,18 @@
               "t": "Breakpoint (px)",
               "src": "machine",
               "h": "471fd5ad7b00"
-            },
-            "shift": {
-              "t": "Skift",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "th": {
           "file": "0f09e58cefde",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -2438,11 +1747,6 @@
               "t": "จดจําสถานะที่อยู่ URL",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "เลื่อนบิต",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
@@ -2514,12 +1818,12 @@
         "zh-cn": {
           "file": "5a8a9a45194f",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 0,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 3,
+            "machine": 2,
             "stale": 0,
             "missing": 0
           },
@@ -2533,23 +1837,18 @@
               "t": "在 URL 中记住状态",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "移动",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "uk": {
           "file": "58941944f3ed",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -2558,23 +1857,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Шиф",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "vi": {
-          "file": "15dfc0ac0867",
+          "file": "4231a36e4e01",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -2583,23 +1877,18 @@
               "t": "Ctrl / Cmd",
               "src": "machine",
               "h": "bf592662523e"
-            },
-            "shift": {
-              "t": "Dịch:",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "zh-hk": {
           "file": "afc03af04f8e",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -2608,23 +1897,18 @@
               "t": "記得 URL 中的狀態",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "移動",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         },
         "zh-tw": {
           "file": "afc03af04f8e",
           "counts": {
-            "esri": 55,
+            "esri": 56,
             "esri-check": 1,
             "community": 0,
             "manual": 0,
             "existing": 0,
-            "machine": 2,
+            "machine": 1,
             "stale": 0,
             "missing": 0
           },
@@ -2633,11 +1917,6 @@
               "t": "記得 URL 中的狀態",
               "src": "machine",
               "h": "c137a8dc3ceb"
-            },
-            "shift": {
-              "t": "移動",
-              "src": "machine",
-              "h": "469d5b183fdc"
             }
           }
         }
